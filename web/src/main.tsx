@@ -31,7 +31,7 @@ function App() {
   const { user, ready } = useAuth();
   if (!ready || !user) return <div className="login-wrap"><p className="muted">Opening the demo…</p></div>;
   return (
-    <Routes>
+    <Routes key={user.username}>
       <Route element={<Layout />}>
         <Route index element={<Overview />} />
         <Route path="dashboard" element={canSeeDashboard(user.role) ? <Dashboard /> : <Navigate to="/" replace />} />

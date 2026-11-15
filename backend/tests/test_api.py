@@ -18,6 +18,21 @@ def test_public_session_opens_the_demo(client):
     assert client.get("/api/v1/astronauts", headers={"Authorization": f"Bearer {body['access_token']}"}).status_code == 200
 
 
+def test_demo_switch_opens_pilot(client):
+    r = client.post("/api/v1/auth/demo-switch", json={"username": "pilot"})
+    assert r.status_code == 200
+    user = r.json()["user"]
+    assert user["username"] == "pilot" and user["astronaut_id"] == "AST-900"
+    headers = {"Authorization": f"Bearer {r.json()['access_token']}"}
+    crew = client.get("/api/v1/astronauts", headers=headers).json()["astronauts"]
+    assert [a["id"] for a in crew] == ["AST-900"]
+    assert crew[0]["data_class"] == "real"
+    assert "last_fetched_from_phone" in crew[0]
+    summary = client.get("/api/v1/astronauts/AST-900/summary", headers=headers).json()
+    assert "last_fetched_from_phone" in summary
+    assert client.post("/api/v1/auth/demo-switch", json={"username": "nobody"}).status_code == 404
+
+
 def test_auth_required_and_bad_login(client):
     assert client.get("/api/v1/astronauts").status_code == 401
     assert client.post("/api/v1/auth/login", json={"username": "hajid", "passcode": "nope"}).status_code == 401

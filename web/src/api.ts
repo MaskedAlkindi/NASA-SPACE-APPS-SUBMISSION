@@ -32,7 +32,7 @@ export async function api<T = any>(path: string, opts: { method?: string; body?:
     body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
     signal: opts.signal,
   });
-  if (res.status === 401 && path !== "/auth/login" && path !== "/auth/public") {
+  if (res.status === 401 && path !== "/auth/login" && path !== "/auth/public" && path !== "/auth/demo-switch") {
     storeSession(null, null);
     window.dispatchEvent(new Event("hmt:logout"));
   }
@@ -58,11 +58,12 @@ export interface MetricSummary {
 }
 export interface Domain { status: string; metrics: MetricSummary[]; concerns: string[]; [k: string]: any }
 export interface Summary {
-  astronaut: { id: string; callsign: string; name: string; role: string };
-  as_of: string | null; days_of_data: number; domains: Record<string, Domain>; unavailable_metrics: string[];
+  astronaut: { id: string; callsign: string; name: string; role: string; data_class?: string };
+  as_of: string | null; last_fetched_from_phone?: string | null; days_of_data: number; domains: Record<string, Domain>; unavailable_metrics: string[];
 }
 export interface CrewMember {
   id: string; callsign: string; name: string; role: string; data_class: string; as_of: string | null;
+  last_fetched_from_phone?: string | null;
   key_metrics: Record<string, { latest: number; status: string; unit: string }>; open_alerts: number;
   domain_status: Record<string, string>;
 }

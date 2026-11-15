@@ -5,6 +5,7 @@ interface AuthCtx {
   user: User | null;
   ready: boolean;
   login: (username: string, passcode: string) => Promise<void>;
+  switchUser: (username: string) => Promise<User>;
   logout: () => void;
 }
 const Ctx = createContext<AuthCtx>(null!);
@@ -33,8 +34,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(r.user);
     setReady(true);
   };
+  const switchUser = async (username: string) => {
+    const r = await api<{ access_token: string; user: User }>("/auth/demo-switch", { body: { username } });
+    storeSession(r.access_token, r.user);
+    setUser(r.user);
+    setReady(true);
+    return r.user;
+  };
   const logout = () => { storeSession(null, null); setUser(null); void enterPublic(); };
-  return <Ctx.Provider value={{ user, ready, login, logout }}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={{ user, ready, login, switchUser, logout }}>{children}</Ctx.Provider>;
 }
 
 export const useAuth = () => useContext(Ctx);

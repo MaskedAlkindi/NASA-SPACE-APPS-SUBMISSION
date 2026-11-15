@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 import { api, type Alert, type CrewMember } from "../api";
 import { useApi, useLive } from "../hooks";
-import { useAuth } from "../auth";
-import { canSeeDashboard } from "../components/Layout";
 import { AlertItem, Badge, Card, DataClassBadge, fmt, Loading, STATUS_TEXT } from "../components/ui";
 
 const DOMAIN_LABEL: Record<string, string> = { cardiovascular: "Cardio", sleep: "Sleep", activity: "Activity", wellbeing: "Wellbeing", vitals: "Vitals" };
 
 export default function Overview() {
-  const { user } = useAuth();
   const mission = useApi<any>("/mission");
   const crew = useApi<{ astronauts: CrewMember[] }>("/astronauts");
   const env = useApi<any>("/environment?hours=24");
@@ -49,9 +46,9 @@ export default function Overview() {
 
       <div className="grid g-auto">
         {(crew.data?.astronauts ?? []).map((c) => (
-          <Link key={c.id} to={canSeeDashboard(user?.role) ? `/dashboard?a=${c.id}` : "#"} onClick={(e) => { if (!canSeeDashboard(user?.role)) e.preventDefault(); }}
-            style={{ textDecoration: "none", color: "inherit", cursor: canSeeDashboard(user?.role) ? "pointer" : "default" }}>
-            <Card title={<div><h2>{c.callsign}</h2><div className="small muted">{c.role} {c.data_class === "simulated" && <Badge kind="sim">simulated</Badge>}</div></div>}
+          <Link key={c.id} to={`/dashboard?a=${c.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}>
+            <Card title={<div><h2>{c.callsign}</h2><div className="small muted">{c.role} {c.data_class === "simulated" && <Badge kind="sim">simulated</Badge>}{c.data_class === "real" && <Badge kind="info">phone</Badge>}</div>{c.data_class === "real" && <div className="small"><b>{c.last_fetched_from_phone ? `last fetched from phone · ${new Date(c.last_fetched_from_phone).toLocaleString()}` : "last fetched from phone"}</b></div>}</div>}
               extra={c.open_alerts > 0 ? <Badge kind="caution">{c.open_alerts} alerts</Badge> : <Badge kind="ok">nominal</Badge>}>
               <div className="grid g2" style={{ gap: 8 }}>
                 {[["resting_heart_rate", "Resting HR"], ["hrv_sdnn", "HRV"], ["sleep_duration", "Sleep"], ["fatigue_score", "Fatigue"]].map(([k, label]) => {

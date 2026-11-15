@@ -6,6 +6,11 @@ import { Card, chartTooltip, DataClassBadge, Loading, MetricTile } from "../comp
 import { useApi, useLive } from "../hooks";
 
 const short = (d: string) => d.slice(5);
+const fetched = (iso?: string | null) => {
+  if (!iso) return "last fetched from phone";
+  const when = new Date(iso);
+  return `last fetched from phone · ${Number.isNaN(when.getTime()) ? iso : when.toLocaleString()}`;
+};
 
 function BaselineChart({ data, metric, summary, color, unit, bars }: { data: any[]; metric: string; summary?: any; color: string; unit: string; bars?: boolean }) {
   const range = summary?.baseline_range;
@@ -50,6 +55,7 @@ export default function Dashboard() {
         <div>
           <h1>{current ? `${current.callsign} · ${current.role}` : "Astronaut dashboard"}</h1>
           <p>Shaded band = this astronaut's usual range (10th to 90th percentile of their own recent days).</p>
+          {current?.data_class === "real" && <p><b>{fetched(summary.data?.last_fetched_from_phone)}</b></p>}
         </div>
         <div className="spacer" />
         <AstronautPicker crew={crew} selected={selected} onSelect={select} />

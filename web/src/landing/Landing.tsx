@@ -238,9 +238,11 @@ const PHONES: { os: string; shots: [string, string, string][] }[] = [
   {
     os: "iPhone",
     shots: [
-      ["/landing/phones/ios-connect.jpg", "connected as ATLAS", "iPhone connect screen, paired to the server and signed in as ATLAS."],
-      ["/landing/phones/ios-health.jpg", "Apple Health, read only", "iPhone health screen: a fatigue check-in, and Apple Health types the app only reads."],
-      ["/landing/phones/ios-exercise.jpg", "arm raises, counted", "iPhone exercise screen counting arm raises on the camera."],
+      ["/landing/phones/ios-connect.jpg", "this phone's device id", "iPhone connect screen with the device ID and the HEALTH-01 server address."],
+      ["/landing/phones/ios-health.jpg", "last sync from the phone", "iPhone health screen with auto sync on, a tiredness check-in, and the last sync time."],
+      ["/landing/phones/ios-walk-connect.jpg", "connect this phone", "iPhone walkthrough: type the server address and copy the device ID."],
+      ["/landing/phones/ios-walk-health.jpg", "health uploads itself", "iPhone walkthrough: Apple Health readings upload about every 5 minutes."],
+      ["/landing/phones/ios-walk-exercise.jpg", "count reps on camera", "iPhone walkthrough: the camera follows the body and saves the rep count."],
     ],
   },
   {
@@ -372,7 +374,7 @@ export default function Landing() {
         {page === "references" ? <References /> : <>
         <section className="sk-hero">
           <div className="sk-hero-text">
-            <span className="sk-date">page 01 · Al Amerat, Oman</span>
+            <span className="sk-date">NASA Space Apps Submission 2026 - Cottbus venue</span>
             <h1>keeping astronauts <Circled>healthy</Circled>,<br />a long way from home.</h1>
             <p className="sk-lead">HEALTH-01 is the crew notebook for a long mission.<br />the watch, the check-in, the cabin, the workout and the food log, each person compared with their own recent days.</p>
             <div className="sk-actions">
@@ -732,7 +734,7 @@ export default function Landing() {
                 <div className="sk-phone-row">
                   {board.shots.map(([src, caption, alt], i) => (
                     <a key={src} className="sk-shot-link" href={src} target="_blank" rel="noreferrer">
-                      <figure className="sk-polaroid sk-phone" style={{ transform: `rotate(${[-1.6, 1.1, -0.6][i]}deg)` }}>
+                      <figure className="sk-polaroid sk-phone" style={{ transform: `rotate(${[-1.6, 1.1, -0.6, 1.3, -1.1][i % 5]}deg)` }}>
                         <span className="sk-tape" aria-hidden="true" />
                         <img src={src} alt={alt} />
                         <figcaption>{caption}</figcaption>

@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { NavLink, Outlet, useLocation, useSearchParams } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useChatActivity, useElapsed } from "../assistantChat";
 import { useAuth } from "../auth";
 import { useApi, useLive } from "../hooks";
@@ -37,8 +37,7 @@ const NAV: [string, NavItem[]][] = [
   ]],
 ];
 const SETTINGS: NavItem = ["/settings", "Settings", I("M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z")];
-// Mission control sees the crew as a whole, not one astronaut's dashboard.
-export const canSeeDashboard = (role?: string) => role !== "mission_control";
+export const canSeeDashboard = (_role?: string) => true;
 // Mission Control is the admin.
 export const isAdmin = (role?: string) => role === "mission_control";
 
@@ -46,8 +45,17 @@ export default function Layout() {
   const activity = useChatActivity();
   const elapsed = useElapsed(activity.startedAt, activity.busy);
   const onAssistant = useLocation().pathname === "/assistant";
-  const { user } = useAuth();
+  const { user, switchUser } = useAuth();
+  const navigate = useNavigate();
+  const accounts = useApi<{ demo_mode: boolean; accounts: { username: string; display_name: string; role: string; astronaut_id: string | null }[] }>("/auth/demo-accounts");
   const [params] = useSearchParams();
+  const chooseUser = async (username: string) => {
+    if (!username || username === user?.username) return;
+    try {
+      const next = await switchUser(username);
+      navigate(next.astronaut_id ? `/dashboard?a=${encodeURIComponent(next.astronaut_id)}` : "/");
+    } catch { /* stay on the current user */ }
+  };
   const health = useApi<any>("/health");
   const astronaut = params.get("a");
   const keepCrew = (to: string) => (astronaut && !to.includes("?") ? `${to}?a=${encodeURIComponent(astronaut)}` : to);
@@ -93,7 +101,15 @@ export default function Layout() {
           <div className="spacer" />
           {user && (
             <span className="row small">
-              <span className="muted">{user.display_name}</span>
+              {accounts.data?.demo_mode ? (
+                <label className="row small">view as
+                  <select className="input user-switch" aria-label="Switch user" value={user.username} onChange={(e) => { void chooseUser(e.target.value); }}>
+                    {accounts.data.accounts.map((a) => (
+                      <option key={a.username} value={a.username}>{a.display_name || a.username}</option>
+                    ))}
+                  </select>
+                </label>
+              ) : <span className="muted">{user.display_name}</span>}
               <Badge kind="info">{user.role.replace("_", " ")}</Badge>
             </span>
           )}

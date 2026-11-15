@@ -84,6 +84,27 @@ def public_session(db: Session = Depends(get_db)):
     return _session(user)
 
 
+class SwitchIn(BaseModel):
+    username: str = Field(min_length=1, max_length=64)
+
+
+def _last_fetched_from_phone(db: Session, astronaut_id: str) -> str | None:
+    ts = db.execute(select(func.max(Measurement.timestamp)).where(
+        Measurement.astronaut_id == astronaut_id, Measurement.data_class == "real")).scalar()
+    return ts.isoformat() if ts else None
+
+
+@router.post("/auth/demo-switch", tags=["auth"])
+def demo_switch(body: SwitchIn, db: Session = Depends(get_db)):
+    """Demo only: change who you are looking as, with no passcode."""
+    if not get_settings().demo_mode:
+        raise HTTPException(404, "Not available")
+    user = db.get(User, body.username.strip())
+    if user is None:
+        raise HTTPException(404, "Unknown demo user")
+    return _session(user)
+
+
 @router.get("/auth/demo-accounts", tags=["auth"])
 def demo_accounts(db: Session = Depends(get_db)):
     s = get_settings()
@@ -149,7 +170,8 @@ def astronauts(db: Session = Depends(get_db), user: Principal = Depends(current_
                 if m["metric"] in ("resting_heart_rate", "hrv_sdnn", "sleep_duration", "steps", "fatigue_score") and m["status"] != "no_data":
                     key[m["metric"]] = {"latest": m["latest"], "status": m["status"], "unit": m["unit"]}
         out.append({"id": a.id, "callsign": a.callsign, "name": a.name, "role": a.role, "data_class": a.data_class,
-                    "as_of": summ["as_of"], "key_metrics": key, "open_alerts": n_alerts,
+                    "as_of": summ["as_of"], "last_fetched_from_phone": _last_fetched_from_phone(db, a.id) if a.data_class == "real" else None,
+                    "key_metrics": key, "open_alerts": n_alerts,
                     "domain_status": {k: v["status"] for k, v in summ["domains"].items()}})
     return {"astronauts": out}
 
@@ -160,7 +182,8 @@ def astronaut_summary(astronaut_id: str, db: Session = Depends(get_db), user: Pr
     a = db.get(Astronaut, astronaut_id)
     if not a:
         raise HTTPException(404, "Astronaut not found")
-    return {"astronaut": {"id": a.id, "callsign": a.callsign, "name": a.name, "role": a.role},
+    return {"astronaut": {"id": a.id, "callsign": a.callsign, "name": a.name, "role": a.role, "data_class": a.data_class},
+            "last_fetched_from_phone": _last_fetched_from_phone(db, astronaut_id) if a.data_class == "real" else None,
             **health_summary(astronaut_daily(db, astronaut_id))}
 
 

@@ -29,6 +29,7 @@
   .big { margin: 0; color: #ffd66b; font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1; font-weight: 700; }
   .gold { margin: 0; color: #ffd66b; font-weight: 650; }
   footer { margin-top: auto; display: flex; justify-content: space-between; color: #a9b0c0; font-size: 0.8rem; }
+  img.egg { position: absolute; width: 42px; height: 42px; object-fit: cover; border-radius: 3px; border: 2px solid #f2ede2; box-shadow: 0 3px 8px rgba(0,0,0,.45); z-index: 3; }
   .title { margin: auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .title img { width: min(150px, 34%); height: auto; }
   .name { margin: 6px 0 0; font-size: clamp(1.6rem, 4vw, 2.2rem); font-family: "Marker Felt", "Segoe Print", "Avenir Next", sans-serif; }
@@ -69,10 +70,11 @@
   <div class="bar">
     <button type="button" id="prev">Previous</button>
     <button type="button" id="next">Next</button>
-    <span id="count">Slide 1 of 8</span>
+    <span id="count">Slide 1 of 7</span>
   </div>
   <div id="deck">
     <article class="slide">
+      <img class="egg" src="img/egg-logo.jpg" alt="" style="top:16px;right:18px;transform:rotate(8deg)">
       <div class="title">
         <img src="img/logo.png" alt="Amerat 01 helmet sketch">
         <p class="name">HEALTH-01</p>
@@ -80,9 +82,10 @@
         <p class="line">Hajid Alkindi</p>
         <p class="line">health for the people on board</p>
       </div>
-      <footer><span>5 minutes</span><span>1 / 8</span></footer>
+      <footer><span>5 minutes</span><span>1 / 7</span></footer>
     </article>
     <article class="slide" hidden>
+      <img class="egg" src="img/egg-hall.jpg" alt="" style="top:16px;right:18px;transform:rotate(-7deg)">
       <p class="kicker">the problem</p>
       <p class="headline">Up there, normal moves.</p>
       <div class="split">
@@ -94,15 +97,17 @@
         </div>
         <img class="shot" src="img/hazards.jpg" alt="NASA's five hazards on the HEALTH-01 page.">
       </div>
-      <footer><span>5 minutes</span><span>2 / 8</span></footer>
+      <footer><span>5 minutes</span><span>2 / 7</span></footer>
     </article>
     <article class="slide" hidden>
+      <img class="egg" src="img/egg-demo.jpg" alt="" style="bottom:28px;right:18px;transform:rotate(6deg)">
       <p class="kicker">how it works</p>
       <p class="headline">Watch in. A person decides.</p>
       <img class="wide" src="img/diagram.jpg" alt="Watches, check-ins and the cabin go into one server. A person decides.">
-      <footer><span>5 minutes</span><span>3 / 8</span></footer>
+      <footer><span>5 minutes</span><span>3 / 7</span></footer>
     </article>
     <article class="slide" hidden>
+      <img class="egg" src="img/egg-earth.jpg" alt="" style="top:16px;right:18px;transform:rotate(-9deg)">
       <p class="kicker">the proof</p>
       <p class="headline">Earth studies. Not astronauts yet.</p>
       <div class="three">
@@ -110,9 +115,10 @@
         <div class="card"><p class="big">0.83</p><p class="line">sugar pattern</p><p class="quiet">CGMacros. 45 adults. A pattern, not a diagnosis.</p></div>
         <div class="card"><p class="big">1.1</p><p class="line">beats off the watch</p><p class="quiet">MMASH. 22 people. We checked the math.</p></div>
       </div>
-      <footer><span>5 minutes</span><span>4 / 8</span></footer>
+      <footer><span>5 minutes</span><span>4 / 7</span></footer>
     </article>
     <article class="slide" hidden>
+      <img class="egg" src="img/egg-suit.jpg" alt="" style="bottom:28px;left:22px;transform:rotate(7deg)">
       <p class="kicker">from the studies</p>
       <p class="headline">A problem. Then what we built.</p>
       <div class="pairs">
@@ -141,9 +147,10 @@
           <p class="line">Exercise says go, go lighter, or rest.</p>
         </div>
       </div>
-      <footer><span>5 minutes</span><span>5 / 8</span></footer>
+      <footer><span>5 minutes</span><span>5 / 7</span></footer>
     </article>
     <article class="slide" hidden>
+      <img class="egg" src="img/egg-ame.jpg" alt="" style="top:14px;right:16px;transform:rotate(-6deg)">
       <p class="kicker">what you log</p>
       <div class="two">
         <div class="panel">
@@ -157,9 +164,10 @@
           <img class="shot" src="img/nutrition.jpg" alt="Nutrition page with rings for one station day.">
         </div>
       </div>
-      <footer><span>5 minutes</span><span>6 / 8</span></footer>
+      <footer><span>5 minutes</span><span>6 / 7</span></footer>
     </article>
     <article class="slide" hidden>
+      <img class="egg" src="img/egg-donkey.jpg" alt="" style="bottom:28px;left:22px;transform:rotate(-8deg)">
       <div class="split">
         <div class="copy">
           <p class="kicker">close</p>
@@ -167,32 +175,12 @@
           <p class="line">Not a doctor.</p>
           <p class="line">Not tested on astronauts.</p>
           <p class="line">Every number has a home.</p>
+          <p class="quiet">Kept: 14B. Match 0.92. No invented numbers. 6 of 8 probes. Not the live voice yet.</p>
+          <p class="quiet">Failed: 0.5B, 17% invented numbers, 2 of 8. 32B, match 0.93, 4 of 8. The 7B was never trained.</p>
         </div>
         <img class="donkey" src="img/donkey.jpg" alt="Hajid and the space donkey looking at Earth.">
       </div>
-      <footer><span>5 minutes</span><span>7 / 8</span></footer>
-    </article>
-    <article class="slide" hidden>
-      <p class="kicker">fine-tuning</p>
-      <p class="headline">One we keep. The rest failed.</p>
-      <div class="pairs">
-        <div class="pair">
-          <p class="gold">kept</p>
-          <ul class="bullets">
-            <li>14B + QLoRA. Match 0.92. No invented numbers. 6 of 8 safety probes.</li>
-            <li>Not the live voice yet. The demo still uses the untuned model, or the offline explainer.</li>
-          </ul>
-        </div>
-        <div class="pair">
-          <p class="gold">failed</p>
-          <ul class="bullets">
-            <li>0.5B + QLoRA. Invented numbers on 17% of answers. 2 of 8 probes.</li>
-            <li>32B + QLoRA. Match 0.93, but only 4 of 8 probes, so it was set aside.</li>
-            <li>The 7B was never trained. The first card was too small.</li>
-          </ul>
-        </div>
-      </div>
-      <footer><span>5 minutes</span><span>8 / 8</span></footer>
+      <footer><span>5 minutes</span><span>7 / 7</span></footer>
     </article>
   </div>
 <script>

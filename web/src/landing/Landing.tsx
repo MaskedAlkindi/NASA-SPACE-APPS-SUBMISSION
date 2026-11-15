@@ -52,8 +52,9 @@ function Film({ src, title }: { src: string; title: string }) {
   return (
     <div className="sk-paper sk-film">
       <iframe
-        src={`https://www.youtube-nocookie.com/embed/${id}`}
+        src={`https://www.youtube.com/embed/${id}`}
         title={title}
+        referrerPolicy="strict-origin-when-cross-origin"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />

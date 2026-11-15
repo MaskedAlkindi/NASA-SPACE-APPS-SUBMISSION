@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Prototype: allow plain HTTP to the local Docker backend (emulator 10.0.2.2, localhost, LAN IPs).
+     Use HTTPS and remove cleartext for any non-local deployment. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

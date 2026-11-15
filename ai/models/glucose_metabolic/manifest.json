@@ -1,0 +1,30 @@
+{
+  "id": "glucose_metabolic",
+  "name": "Glucose & metabolic monitoring (CGMacros)",
+  "version": "1.0.0",
+  "category": "glucose",
+  "description": "Fasting glucose trend and variability, HOMA-IR when fasting insulin is measured, and (with CGM data) CGM metrics plus a research insulin-resistance pattern flag.",
+  "intended_use": "Track metabolic trends in flight and suggest when a lab check could be worthwhile.",
+  "not_intended_for": "Diagnosing diabetes or insulin resistance; replacing laboratory testing.",
+  "entrypoint": "ai.models.glucose_metabolic.model:GlucoseMetabolic",
+  "inputs": [
+    {"metric": "blood_glucose", "unit": "mg/dL", "required": true, "min_days": 3, "max_staleness_days": 3},
+    {"metric": "fasting_insulin", "unit": "µIU/mL", "required": false, "max_staleness_days": 30}
+  ],
+  "outputs": {"fasting_mean_14d": "mg/dL", "fasting_sd_14d": "mg/dL", "days_outside_reference_14d": "count",
+              "trend_mg_dl_per_week": "mg/dL/week", "homa_ir": "unitless, if insulin measured",
+              "cgm": "CGM consensus metrics, if dense data", "p_insulin_resistance_pattern": "probability, if CGM"},
+  "supported_indicators": ["blood sugar"],
+  "datasets": [{"name": "CGMacros v1.0.0", "source": "https://physionet.org/content/cgmacros/1.0.0/", "license": "CC BY-NC-SA 4.0",
+                "citation": "CGMacros (PhysioNet 2025); Goldberger A. et al. PhysioNet. Circulation 2000",
+                "population": "45 adults: normal, prediabetes, type 2 diabetes (USA)", "astronaut_data": false, "simulated": false,
+                "provenance_file": "data/external/cgmacros/PROVENANCE.json"}],
+  "evidence_level": "earth_research",
+  "validated_on_astronauts": false,
+  "status": "ready",
+  "artifact": "artifacts/glucose_cgmacros_v1.joblib",
+  "report": "report.json",
+  "enabled_by_default": true,
+  "execution": {"environments": ["server", "desktop"], "provider": "local", "timeout_s": 10, "memory_mb": 100, "requires": ["scikit-learn==1.5.2"]},
+  "alerting": {"emit_alerts": true, "min_severity": "caution", "cooldown_hours": 72, "thresholds": {"homa_ir_info": 2.5, "ir_probability_info": 0.8}}
+}

@@ -1,0 +1,78 @@
+{
+ "id": "legacy_anomaly",
+ "name": "Personal anomaly detection (original, simulation-trained)",
+ "version": "1.0.0",
+ "category": "anomaly",
+ "description": "The original Isolation Forest on personal-baseline z-scores of resting HR, HRV, sleep and steps.",
+ "intended_use": "Flag unusual combinations of daily measurements.",
+ "entrypoint": "ai.models.legacy_wrappers:LegacyAnomaly",
+ "inputs": [
+  {
+   "metric": "resting_heart_rate",
+   "unit": "bpm",
+   "required": true,
+   "min_days": 7,
+   "max_staleness_days": 2
+  },
+  {
+   "metric": "hrv_sdnn",
+   "unit": "ms",
+   "required": false,
+   "max_staleness_days": 2
+  },
+  {
+   "metric": "sleep_duration",
+   "unit": "h",
+   "required": false,
+   "max_staleness_days": 2
+  },
+  {
+   "metric": "steps",
+   "unit": "count",
+   "required": false,
+   "max_staleness_days": 2
+  }
+ ],
+ "outputs": {
+  "percentile": "vs nominal simulated days",
+  "missing": "inputs missing"
+ },
+ "supported_indicators": [
+  "heart rate",
+  "daily sleep hours"
+ ],
+ "alerting": {
+  "emit_alerts": false,
+  "min_severity": "caution",
+  "cooldown_hours": 24,
+  "thresholds": {}
+ },
+ "evidence_level": "simulation",
+ "validated_on_astronauts": false,
+ "status": "ready",
+ "artifact": null,
+ "report": null,
+ "enabled_by_default": true,
+ "datasets": [
+  {
+   "name": "Synthetic crew generator (ml/datasets/synthetic.py)",
+   "source": "this repository",
+   "license": "project licence",
+   "population": "simulated",
+   "astronaut_data": false,
+   "simulated": true
+  }
+ ],
+ "execution": {
+  "environments": [
+   "server",
+   "desktop"
+  ],
+  "provider": "local",
+  "timeout_s": 10,
+  "memory_mb": 100,
+  "requires": [
+   "scikit-learn==1.5.2"
+  ]
+ }
+}

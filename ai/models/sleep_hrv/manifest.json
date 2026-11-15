@@ -1,0 +1,30 @@
+{
+  "id": "sleep_hrv",
+  "name": "Sleep & HRV recovery indicators",
+  "version": "1.0.0",
+  "category": "sleep_hrv",
+  "description": "Sleep debt against the astronaut's own usual sleep, sleep-timing regularity, and HRV against a personal baseline, combined into a simple recovery indicator.",
+  "intended_use": "Recovery context for the dashboard, assistant and exercise guidance.",
+  "not_intended_for": "Diagnosing sleep disorders.",
+  "entrypoint": "ai.models.sleep_hrv.model:SleepHRV",
+  "inputs": [
+    {"metric": "sleep_duration", "unit": "h", "required": true, "min_days": 7, "max_staleness_days": 2},
+    {"metric": "sleep_midpoint", "unit": "h", "required": false, "max_staleness_days": 2},
+    {"metric": "hrv_sdnn", "unit": "ms", "required": false, "max_staleness_days": 3},
+    {"metric": "hrv_rmssd", "unit": "ms", "required": false, "max_staleness_days": 3}
+  ],
+  "outputs": {"sleep_debt_7d_h_vs_own_median": "h", "sleep_timing_sd_7d_h": "h", "hrv_z": "robust z", "hrv_metric": "hrv_sdnn or hrv_rmssd",
+              "recovery_indicator": "normal | watch | reduced"},
+  "supported_indicators": ["daily sleep hours", "heart rate variability"],
+  "datasets": [{"name": "MMASH v1.0.0 (verification only)", "source": "https://physionet.org/content/mmash/1.0.0/", "license": "ODbL v1.0",
+                "citation": "Rossi A. et al. MMASH, PhysioNet 2020, doi:10.13026/cerq-fc86", "population": "22 healthy young men",
+                "astronaut_data": false, "simulated": false, "provenance_file": "data/external/mmash/PROVENANCE.json"}],
+  "evidence_level": "rule_based",
+  "validated_on_astronauts": false,
+  "status": "ready",
+  "artifact": null,
+  "report": "report.json",
+  "enabled_by_default": true,
+  "execution": {"environments": ["server", "desktop", "device"], "provider": "local", "timeout_s": 5, "memory_mb": 50, "requires": ["numpy", "pandas"]},
+  "alerting": {"emit_alerts": true, "min_severity": "caution", "cooldown_hours": 24, "thresholds": {"sleep_debt_h": 5.0, "timing_sd_h": 1.0, "hrv_low_z": -2.0}}
+}

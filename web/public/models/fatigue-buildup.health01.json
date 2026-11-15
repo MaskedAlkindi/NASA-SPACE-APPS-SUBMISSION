@@ -1,0 +1,17 @@
+{
+  "format": "health01-model-set",
+  "id": "fatigue_buildup",
+  "name": "Fatigue build-up",
+  "version": "1.0.0",
+  "description": "Compares today's fatigue check-in with this astronaut's own earlier days. A climb files an alert.",
+  "metric": "fatigue_score",
+  "direction": "above",
+  "mode": "baseline_z",
+  "info_z": 1.0,
+  "caution_z": 1.5,
+  "warning_z": 2.5,
+  "min_days": 4,
+  "window_days": 14,
+  "emit_alerts": true,
+  "min_severity": "caution"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "illness_rhr",
+  "name": "Illness-related resting heart rate change",
+  "version": "1.0.0",
+  "category": "illness",
+  "description": "Flags a resting heart rate well above the astronaut's own 28-day baseline, a change that often accompanies the onset of infections.",
+  "intended_use": "Early, non-diagnostic prompt to re-check and report how the astronaut feels.",
+  "not_intended_for": "Diagnosing COVID-19 or any illness; clinical decisions.",
+  "entrypoint": "ai.models.illness_rhr.model:IllnessRHR",
+  "inputs": [
+    {"metric": "resting_heart_rate", "unit": "bpm", "kind": "daily", "required": true, "min_days": 15, "max_staleness_days": 2,
+     "description": "Daily resting heart rate (device value, or HR during inactivity)."}
+  ],
+  "outputs": {"z": "robust z-score of today's resting HR vs the previous 28 days", "resting_hr": "bpm", "baseline_rhr": "bpm", "previous_day_z": "robust z or null"},
+  "supported_indicators": ["heart rate", "illness onset"],
+  "datasets": [{"name": "Stanford smartwatch COVID-19 wearables", "source": "https://medrxiv.org/content/10.1101/2020.07.06.20147512v1",
+                "license": "No explicit licence; public research release. Used for evaluation only, not redistributed.",
+                "citation": "Mishra T. et al. Nat Biomed Eng 4, 1208-1220 (2020)", "population": "smartwatch users, USA",
+                "astronaut_data": false, "simulated": false, "provenance_file": "data/external/stanford_illness/PROVENANCE.json"}],
+  "evidence_level": "earth_research",
+  "validated_on_astronauts": false,
+  "status": "ready",
+  "artifact": null,
+  "report": "report.json",
+  "enabled_by_default": true,
+  "execution": {"environments": ["server", "desktop", "device"], "provider": "local", "timeout_s": 5, "memory_mb": 50, "requires": ["numpy", "pandas"]},
+  "alerting": {"emit_alerts": true, "min_severity": "caution", "cooldown_hours": 24, "thresholds": {"caution_z": 3.0, "info_z": 2.5}}
+}

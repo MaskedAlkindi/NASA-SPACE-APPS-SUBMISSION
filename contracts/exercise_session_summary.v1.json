@@ -1,0 +1,173 @@
+{
+ "description": "A completed (or planned/missed) exercise session, as reported by the exercise module.",
+ "properties": {
+  "schema_version": {
+   "const": "exercise_session_summary.v1",
+   "default": "exercise_session_summary.v1",
+   "title": "Schema Version",
+   "type": "string"
+  },
+  "session_id": {
+   "maxLength": 80,
+   "title": "Session Id",
+   "type": "string"
+  },
+  "astronaut_id": {
+   "maxLength": 32,
+   "pattern": "^[A-Za-z0-9_\\-]+$",
+   "title": "Astronaut Id",
+   "type": "string"
+  },
+  "started_at": {
+   "format": "date-time",
+   "title": "Started At",
+   "type": "string"
+  },
+  "ended_at": {
+   "anyOf": [
+    {
+     "format": "date-time",
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Ended At"
+  },
+  "activity_type": {
+   "default": "unspecified",
+   "maxLength": 40,
+   "title": "Activity Type",
+   "type": "string"
+  },
+  "planned": {
+   "default": true,
+   "title": "Planned",
+   "type": "boolean"
+  },
+  "completed": {
+   "default": true,
+   "title": "Completed",
+   "type": "boolean"
+  },
+  "duration_min": {
+   "anyOf": [
+    {
+     "maximum": 600.0,
+     "minimum": 0.0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Duration Min"
+  },
+  "intensity_rpe": {
+   "anyOf": [
+    {
+     "maximum": 10.0,
+     "minimum": 0.0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Intensity Rpe"
+  },
+  "avg_heart_rate": {
+   "anyOf": [
+    {
+     "maximum": 230.0,
+     "minimum": 25.0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Avg Heart Rate"
+  },
+  "max_heart_rate": {
+   "anyOf": [
+    {
+     "maximum": 230.0,
+     "minimum": 25.0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Max Heart Rate"
+  },
+  "training_load": {
+   "anyOf": [
+    {
+     "minimum": 0.0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Training Load"
+  },
+  "goal_id": {
+   "anyOf": [
+    {
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Goal Id"
+  },
+  "goal_progress_pct": {
+   "anyOf": [
+    {
+     "maximum": 1000.0,
+     "minimum": 0.0,
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Goal Progress Pct"
+  },
+  "source_module": {
+   "default": "exercise",
+   "maxLength": 40,
+   "title": "Source Module",
+   "type": "string"
+  },
+  "data_class": {
+   "default": "real",
+   "enum": [
+    "real",
+    "simulated"
+   ],
+   "title": "Data Class",
+   "type": "string"
+  }
+ },
+ "required": [
+  "session_id",
+  "astronaut_id",
+  "started_at"
+ ],
+ "title": "ExerciseSessionSummaryV1",
+ "type": "object"
+}

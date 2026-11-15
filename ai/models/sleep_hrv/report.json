@@ -1,0 +1,44 @@
+{
+ "model_id": "sleep_hrv",
+ "dataset": "MMASH v1.0.0",
+ "evaluated_at": "2026-11-14T14:43:25+00:00",
+ "evaluation_type": "signal-processing verification (no model training)",
+ "hr_from_rr_vs_actigraph": {
+  "people": 22,
+  "minutes": 29993,
+  "median_mae_bpm": 1.08,
+  "median_bias_bpm": -0.19,
+  "median_r": 0.988
+ },
+ "sleep_efficiency_recomputed": {
+  "people": 21,
+  "max_abs_diff_pct_points": 0.0,
+  "mean_tst_h": 5.31
+ },
+ "night_hrv": {
+  "people_with_valid_night": 19,
+  "rmssd_ms_median": 52.6,
+  "rmssd_ms_iqr": [
+   41.2,
+   59.3
+  ],
+  "median_kept_pct": 78.8
+ },
+ "exploratory_correlations": {
+  "night_rmssd_vs_Daily_stress": {
+   "n": 19,
+   "spearman_rho": -0.27,
+   "p_value": 0.264
+  },
+  "night_rmssd_vs_STAI2": {
+   "n": 19,
+   "spearman_rho": 0.244,
+   "p_value": 0.313
+  }
+ },
+ "limitations": [
+  "22 healthy young men, one day each: verification only, no generalisable model.",
+  "Correlations are exploratory, uncorrected for multiple comparisons.",
+  "Earth data; not validated on astronauts."
+ ]
+}

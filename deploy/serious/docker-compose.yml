@@ -1,0 +1,79 @@
+# HEALTH-01 "serious" edition: same sketch, fewer words. The site password is off for this public demo.
+# Runs next to the notebook edition without touching it: own project name, own ports, own database.
+#
+#   docker compose -f deploy/serious/docker-compose.yml --env-file .env up -d --build
+#   website http://localhost:9080   API http://localhost:9000/docs
+name: health01-serious
+
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-hmt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hmt-local-only}
+      POSTGRES_DB: ${POSTGRES_DB:-hmt}
+    volumes:
+      - pgdata_serious:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging: *logging
+
+  api:
+    build:
+      context: ../..
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: ../../.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-hmt}:${POSTGRES_PASSWORD:-hmt-local-only}@db:5432/${POSTGRES_DB:-hmt}
+      NASA_CACHE_DIR: /data/nasa_cache
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL_DOCKER:-http://host.docker.internal:11434}
+      HMT_LLM_TRAINER_URL: ${HMT_LLM_TRAINER_URL:-}
+      HMT_TRAINER_TOKEN: ${HMT_TRAINER_TOKEN:-}
+      SITE_PASSWORD: ${SITE_PASSWORD:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${SERIOUS_API_PORT:-9000}:8000"
+    volumes:
+      - nasa_cache_serious:/data/nasa_cache
+      - ${LLM_DATA_MOUNT:-../../data/llm}:/data/llm
+    logging: *logging
+
+  web:
+    build:
+      context: ../../web
+      args:
+        VITE_EDITION: serious
+        NGINX_CONF: nginx.serious.conf
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "${SERIOUS_WEB_PORT:-9080}:80"
+    logging: *logging
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    restart: unless-stopped
+    ports:
+      - "${SERIOUS_MQTT_PORT:-1884}:1883"
+    volumes:
+      - ../mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    logging: *logging
+
+volumes:
+  pgdata_serious:
+  nasa_cache_serious:

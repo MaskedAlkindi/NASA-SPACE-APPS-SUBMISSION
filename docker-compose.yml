@@ -1,0 +1,106 @@
+name: health-monitor
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hmt}
+      POSTGRES_USER: ${POSTGRES_USER:-hmt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hmt-local-only}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    deploy:
+      resources:
+        limits: { cpus: "1.0", memory: 512M }
+    logging: &logging
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-hmt}:${POSTGRES_PASSWORD:-hmt-local-only}@db:5432/${POSTGRES_DB:-hmt}
+      NASA_CACHE_DIR: /data/nasa_cache
+      # Ollama runs on the host machine, not in Docker; reach it through the host gateway.
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL_DOCKER:-http://host.docker.internal:11434}
+      # Fine-tuning trainer (llm/service/trainer_service.py) on the GPU machine; blank = register runs only
+      HMT_LLM_TRAINER_URL: ${HMT_LLM_TRAINER_URL:-}
+      HMT_TRAINER_TOKEN: ${HMT_TRAINER_TOKEN:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - nasa_cache:/data/nasa_cache
+      # LLM corpus, datasets, runs and evaluations stay on this machine (shared with the trainer)
+      - ${LLM_DATA_MOUNT:-./data/llm}:/data/llm
+    deploy:
+      resources:
+        limits: { cpus: "2.0", memory: 1536M }
+    logging: *logging
+
+  web:
+    build:
+      context: ./web
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/healthz || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits: { cpus: "0.5", memory: 128M }
+    logging: *logging
+
+  # Habitat sensors publish here (MQTT). Assign topics to metrics on the "Habitat sensors" page.
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    restart: unless-stopped
+    ports:
+      - "${MQTT_PORT:-1883}:1883"
+    volumes:
+      - ./deploy/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    logging: *logging
+
+  # Simulated habitat publisher. Not part of `docker compose up`.
+  #   .\scripts\mqtt_sim.ps1
+  #   docker compose --profile mqtt-sim up -d --build mqtt-sim
+  mqtt-sim:
+    profiles: ["mqtt-sim"]
+    build:
+      context: ./services/mqtt_simulator
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      MQTT_EVERY: "5"
+    command: ["python", "-u", "publish.py"]
+    deploy:
+      resources:
+        limits: { cpus: "0.25", memory: 128M }
+    logging: *logging
+
+volumes:
+  pgdata:
+  nasa_cache:

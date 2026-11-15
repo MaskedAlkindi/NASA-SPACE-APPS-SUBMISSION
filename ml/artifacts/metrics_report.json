@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-11-14T13:34:31Z",
+  "disclaimer": "All metrics are computed on SIMULATED data and are NOT clinical accuracy.",
+  "anomaly-iforest-1.0.0": {
+    "model": {
+      "roc_auc": 0.9937,
+      "precision": 0.5833,
+      "recall": 0.9333,
+      "false_positive_rate": 0.0254,
+      "n": 816,
+      "n_positive": 30
+    },
+    "baseline_rule_abs_z_rhr_gt_2.5": {
+      "roc_auc": 1.0,
+      "precision": 0.7317,
+      "recall": 1.0,
+      "false_positive_rate": 0.014,
+      "n": 816,
+      "n_positive": 30
+    },
+    "threshold_definition": "97.5th percentile of anomaly score on nominal training days",
+    "evaluation_data": "SIMULATED held-out astronauts with injected cardio/illness-like episodes",
+    "features": [
+      "resting_heart_rate",
+      "hrv_sdnn",
+      "sleep_duration",
+      "steps"
+    ],
+    "sklearn_version": "1.5.2",
+    "train_days_nominal": 2373
+  },
+  "fatigue-hgb-1.0.0": {
+    "model": {
+      "mae": 0.5209,
+      "rmse": 0.6694,
+      "r2": 0.6078,
+      "n": 960
+    },
+    "baseline_persistence_yesterday": {
+      "mae": 0.7117,
+      "rmse": 0.9245,
+      "r2": 0.2519,
+      "n": 960
+    },
+    "baseline_mean": {
+      "mae": 0.8364,
+      "rmse": 1.0692,
+      "r2": -0.0006,
+      "n": 960
+    },
+    "evaluation_data": "SIMULATED held-out astronauts (grouped split, no individual overlap)",
+    "label_source": "synthetic Samn-Perelli scores from documented generative model",
+    "features": [
+      "sleep_last",
+      "sleep_debt_3d",
+      "sleep_midpoint_sd_3d",
+      "sleep_efficiency_last",
+      "exercise_prev",
+      "workload_today",
+      "fatigue_prev"
+    ],
+    "sklearn_version": "1.5.2",
+    "permutation_importance": {
+      "sleep_last": 0.0714,
+      "sleep_debt_3d": 0.1424,
+      "sleep_midpoint_sd_3d": 0.0351,
+      "sleep_efficiency_last": -0.0011,
+      "exercise_prev": 0.0493,
+      "workload_today": 0.1565,
+      "fatigue_prev": 0.3675
+    }
+  },
+  "forecast-holt-1.0.0": {
+    "version": "forecast-holt-1.0.0",
+    "horizon_days": 7,
+    "metrics": {
+      "resting_heart_rate": {
+        "params": {
+          "alpha": 0.05,
+          "beta": 0.01,
+          "phi": 0.7
+        },
+        "residual_sd_h1": 2.654,
+        "backtest": {
+          "mae_model": 1.86,
+          "mae_naive_last_value": 2.4962,
+          "mae_mean_last_7d": 2.1763,
+          "horizon_days": 7
+        }
+      },
+      "sleep_duration": {
+        "params": {
+          "alpha": 0.05,
+          "beta": 0.01,
+          "phi": 0.5
+        },
+        "residual_sd_h1": 0.5808,
+        "backtest": {
+          "mae_model": 0.4397,
+          "mae_naive_last_value": 0.6028,
+          "mae_mean_last_7d": 0.4765,
+          "horizon_days": 7
+        }
+      },
+      "hrv_sdnn": {
+        "params": {
+          "alpha": 0.05,
+          "beta": 0.05,
+          "phi": 0.5
+        },
+        "residual_sd_h1": 5.2613,
+        "backtest": {
+          "mae_model": 4.0569,
+          "mae_naive_last_value": 5.4885,
+          "mae_mean_last_7d": 4.7195,
+          "horizon_days": 7
+        }
+      }
+    },
+    "evaluation_data": "SIMULATED held-out astronauts, rolling-origin backtest"
+  }
+}

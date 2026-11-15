@@ -1,0 +1,283 @@
+[
+ {
+  "id": "bone-loss-rate",
+  "risks": [
+   "risk-of-spaceflight-induced-bone-changes"
+  ],
+  "metrics": [
+   "exercise_minutes"
+  ],
+  "statement": "Weight-bearing bones lose on average 1-1.5% of mineral density per month in spaceflight.",
+  "values": {
+   "monthly_loss_pct_low": 1.0,
+   "monthly_loss_pct_high": 1.5
+  },
+  "source": "Fracture.pdf",
+  "anchor": "averaged loss rates between 1-1.5% per month for normally weight-bearing skeletal sites",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/Evidence/reports/Fracture.pdf",
+  "page": 4,
+  "quote": "averaged loss rates between 1-1.5% per month for normally weight-bearing skeletal sites",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "bone-loss-rate-web",
+  "risks": [
+   "risk-of-spaceflight-induced-bone-changes"
+  ],
+  "metrics": [],
+  "statement": "NASA HRP: bones lose on average 1% to 1.5% of mineral density per month during spaceflight.",
+  "values": {},
+  "source": "hazard-gravity-fields",
+  "anchor": "weight-bearing bones lose on average 1% to 1.5% of mineral density per month during spaceflight",
+  "source_type": "web page",
+  "source_url": "https://www.nasa.gov/hrp/hazard-gravity-fields/",
+  "page": null,
+  "quote": "weight-bearing bones lose on average 1% to 1.5% of mineral density per month during spaceflight",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "core-temperature",
+  "risks": [
+   "risk-of-altered-immune-system-responses"
+  ],
+  "metrics": [
+   "body_temperature"
+  ],
+  "statement": "Core body temperature rose by about 1 °C at rest in microgravity on the ISS, so fever cut-offs set on Earth are unreliable; the tool compares temperature with each astronaut's own in-flight baseline.",
+  "values": {
+   "rise_c": 1.0
+  },
+  "source": "Nutrition_ER_human_adaptation_2020_final.pdf",
+  "anchor": "core body temperature was shown to increase by about 1",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf",
+  "page": 21,
+  "quote": "core body temperature was shown to increase by about 1",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "body-mass-loss",
+  "risks": [
+   "risk-of-inadequate-food-and-nutrition"
+  ],
+  "metrics": [
+   "body_mass"
+  ],
+  "statement": "Across spaceflight data, body weight fell by about 2.4% per 100 days on average.",
+  "values": {
+   "loss_pct_per_100_days": 2.4
+  },
+  "source": "Nutrition_ER_human_adaptation_2020_final.pdf",
+  "anchor": "average loss of 2.4% of body weight per 100 days",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf",
+  "page": 22,
+  "quote": "average loss of 2.4% of body weight per 100 days",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "body-mass-mir",
+  "risks": [
+   "risk-of-inadequate-food-and-nutrition"
+  ],
+  "metrics": [
+   "body_mass"
+  ],
+  "statement": "Losses of more than 10% of pre-flight body mass were recorded on Mir.",
+  "values": {
+   "severe_loss_pct": 10
+  },
+  "source": "Nutrition_ER_human_adaptation_2020_final.pdf",
+  "anchor": "Body mass losses of more than 10% of preflight body mass were recorded on Mir",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf",
+  "page": 22,
+  "quote": "Body mass losses of more than 10% of preflight body mass were recorded on Mir",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "blood-volume",
+  "risks": [
+   "risk-of-cardiovascular-adaptations"
+  ],
+  "metrics": [],
+  "statement": "Blood volume falls by 10-15% in flight and takes about 2 weeks to stabilise.",
+  "values": {
+   "loss_pct_low": 10,
+   "loss_pct_high": 15
+  },
+  "source": "Nutrition_ER_human_adaptation_2020_final.pdf",
+  "anchor": "10% to 15% reduction in blood volume that takes about 2 weeks to stabilize",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf",
+  "page": 8,
+  "quote": "10% to 15% reduction in blood volume that takes about 2 weeks to stabilize",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "urine-calcium",
+  "risks": [
+   "risk-of-spaceflight-induced-bone-changes",
+   "risk-of-inadequate-food-and-nutrition"
+  ],
+  "metrics": [],
+  "statement": "In flight, 24-hour urine volume was about 17% lower and urinary calcium concentration 50% higher, raising kidney-stone risk; fluid intake matters.",
+  "values": {
+   "urine_volume_pct": -17,
+   "urinary_calcium_pct": 50
+  },
+  "source": "Nutrition_ER_human_adaptation_2020_final.pdf",
+  "anchor": "Twenty-four-hour urine volume is about 17% lower and urinary calcium concentration is 50% greater during flight than before flight",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf",
+  "page": 38,
+  "quote": "Twenty-four-hour urine volume is about 17% lower and urinary calcium concentration is 50% greater during flight than before flight",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "inflight-hr-bp",
+  "risks": [
+   "risk-of-cardiovascular-adaptations"
+  ],
+  "metrics": [
+   "heart_rate",
+   "resting_heart_rate",
+   "blood_pressure_systolic",
+   "blood_pressure_diastolic"
+  ],
+  "statement": "In-flight heart rate and systolic and diastolic blood pressure were lower than pre-flight values, so Earth norms do not fit; the tool uses in-flight personal baselines.",
+  "values": {},
+  "source": "Cardio_Risk_EB_2022_FINAL_4-3-2023.pdf",
+  "anchor": "Inflight heart rate and systolic and diastolic blood pressure were decreased when compared to the preflight values",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/evidence/reports/Cardio%20Risk%20EB%202022%20FINAL_4-3-2023.pdf",
+  "page": 23,
+  "quote": "Inflight heart rate and systolic and diastolic blood pressure were decreased when compared to the preflight values",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "orthostatic",
+  "risks": [
+   "risk-of-cardiovascular-adaptations"
+  ],
+  "metrics": [
+   "blood_pressure_systolic",
+   "heart_rate"
+  ],
+  "statement": "Orthostatic intolerance (light-headedness on standing) is the primary cardiovascular risk when returning to gravity.",
+  "values": {},
+  "source": "Cardio_Risk_EB_2022_FINAL_4-3-2023.pdf",
+  "anchor": "is considered the primary risk during re-exposure to acceleration",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/evidence/reports/Cardio%20Risk%20EB%202022%20FINAL_4-3-2023.pdf",
+  "page": 8,
+  "quote": "is considered the primary risk during re-exposure to acceleration",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "insulin-resistance",
+  "risks": [
+   "risk-of-cardiovascular-adaptations",
+   "risk-of-inadequate-food-and-nutrition"
+  ],
+  "metrics": [
+   "blood_glucose"
+  ],
+  "statement": "After long flights blood glucose was unchanged, but insulin was about 50% higher and HOMA-IR about 60% higher, a sign of insulin resistance. Glucose alone can look normal.",
+  "values": {
+   "insulin_pct": 50,
+   "homa_ir_pct": 60
+  },
+  "source": "Cardio_Risk_EB_2022_FINAL_4-3-2023.pdf",
+  "anchor": "blood glucose levels were not different after long -duration spaceflight but circulating insulin was increased by ~50%",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/evidence/reports/Cardio%20Risk%20EB%202022%20FINAL_4-3-2023.pdf",
+  "page": 40,
+  "quote": "blood glucose levels were not different after long -duration spaceflight but circulating insulin was increased by ~50%",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "radiation-dose-iss",
+  "risks": [
+   "risk-of-radiation-induced-cancers"
+  ],
+  "metrics": [
+   "radiation_dose_rate"
+  ],
+  "statement": "Absorbed dose for a six-month ISS stay is about 30-120 mGy; a Mars mission is expected to be 175-450 mGy.",
+  "values": {
+   "iss_6mo_mgy_low": 30,
+   "iss_6mo_mgy_high": 120,
+   "mars_mgy_low": 175,
+   "mars_mgy_high": 450
+  },
+  "source": "Cardio_Risk_EB_2022_FINAL_4-3-2023.pdf",
+  "anchor": "30-120 mGy for six-month stays",
+  "source_type": "pdf",
+  "source_url": "https://humanresearchroadmap.nasa.gov/evidence/reports/Cardio%20Risk%20EB%202022%20FINAL_4-3-2023.pdf",
+  "page": 69,
+  "quote": "30-120 mGy for six-month stays",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "vitamin-d",
+  "risks": [
+   "risk-of-spaceflight-induced-bone-changes"
+  ],
+  "metrics": [],
+  "statement": "NASA-STD-3001 bone-loss brief: optimal 25-OH vitamin D range is 35-90 ng/mL.",
+  "values": {
+   "low_ng_ml": 35,
+   "high_ng_ml": 90
+  },
+  "source": "ochmo-tb-030-bone-loss.pdf",
+  "anchor": "The optimal/desired range for 25-OH Vitamin D is 35-90 ng/ml",
+  "source_type": "pdf",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-030-bone-loss.pdf",
+  "page": 16,
+  "quote": "The optimal/desired range for 25-OH Vitamin D is 35-90 ng/ml",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "sunrises",
+  "risks": [
+   "risk-from-inadequate-sleep-and-irregular-schedules"
+  ],
+  "metrics": [
+   "sleep_duration",
+   "sleep_midpoint"
+  ],
+  "statement": "ISS crews see 16 sunrises and sunsets a day, which can disrupt the sleep-wake cycle.",
+  "values": {
+   "sunrises_per_day": 16
+  },
+  "source": "risk-from-inadequate-sleep-and-irregular-schedules",
+  "anchor": "Astronauts witness 16 sunrises and sunsets per day aboard the space station",
+  "source_type": "web page",
+  "source_url": "https://www.nasa.gov/reference/risk-from-inadequate-sleep-and-irregular-schedules/",
+  "page": null,
+  "quote": "Astronauts witness 16 sunrises and sunsets per day aboard the space station",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ },
+ {
+  "id": "neutron-share",
+  "risks": [
+   "risk-of-radiation-induced-cancers"
+  ],
+  "metrics": [
+   "radiation_dose_rate"
+  ],
+  "statement": "CSA: neutrons make up about 30% of total radiation on the ISS and need dedicated measurement.",
+  "values": {
+   "neutron_share_pct": 30
+  },
+  "source": "csa-radiation",
+  "anchor": "contributes to about 30% of total radiation on the ISS",
+  "source_type": "web page",
+  "source_url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+  "page": null,
+  "quote": "contributes to about 30% of total radiation on the ISS",
+  "verified_at": "2026-11-14T13:21:41+00:00"
+ }
+]

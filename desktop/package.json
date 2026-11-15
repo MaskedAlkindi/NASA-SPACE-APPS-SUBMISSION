@@ -1,0 +1,27 @@
+{
+  "name": "health01-desktop",
+  "productName": "HEALTH-01",
+  "version": "1.0.0",
+  "description": "HEALTH-01 desktop app: the HEALTH-01 website in its own window, server switching, and local AI model management.",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable",
+    "dist:mac": "electron-builder --mac dmg",
+    "dist:linux": "electron-builder --linux AppImage"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "org.spaceapps.health01",
+    "productName": "HEALTH-01",
+    "files": ["main.js", "preload.js", "renderer/**", "assets/**"],
+    "directories": { "output": "dist" },
+    "win": { "icon": "assets/icon.png" },
+    "mac": { "icon": "assets/icon.png", "category": "public.app-category.medical" },
+    "linux": { "icon": "assets/icon.png", "category": "Science" }
+  }
+}

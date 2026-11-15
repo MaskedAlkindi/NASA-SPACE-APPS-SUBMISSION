@@ -1,0 +1,24 @@
+:root { --bg: #0b1220; --panel: #111a2c; --line: rgba(160, 190, 230, .28); --ink: #eef3fa; --muted: #9fb0c6; --cyan: #7fd6e8; --red: #ef5a3c; --ok: #3fb950; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif; }
+main { max-width: 780px; margin: 0 auto; padding: 36px 24px; }
+header { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+header img { width: 54px; height: 54px; background: #fff; border-radius: 50%; padding: 3px; }
+h1 { margin: 0; font-size: 26px; } h2 { font-size: 16px; margin: 0 0 10px; color: var(--cyan); letter-spacing: .04em; text-transform: uppercase; }
+.sub { color: var(--muted); margin: 2px 0 0; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.server { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.server:last-child { border-bottom: 0; }
+.server .grow { flex: 1; min-width: 0; } .server small { color: var(--muted); display: block; overflow-wrap: anywhere; }
+input { flex: 1; min-width: 220px; background: #0d1526; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font: inherit; }
+button { background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+button:hover { background: rgba(127, 214, 232, .08); }
+button.primary { background: var(--cyan); color: #08121f; border-color: var(--cyan); }
+button.danger { color: var(--red); }
+button:disabled { opacity: .5; cursor: default; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #555; flex: none; } .dot.ok { background: var(--ok); } .dot.bad { background: var(--red); }
+pre { background: #0d1526; padding: 10px; border-radius: 8px; white-space: pre-wrap; font-size: 12px; max-height: 200px; overflow: auto; }
+table { width: 100%; border-collapse: collapse; } td, th { text-align: left; padding: 8px 6px; border-bottom: 1px dashed var(--line); } th { color: var(--muted); font-size: 12px; text-transform: uppercase; }
+.bar { height: 8px; background: #0d1526; border-radius: 99px; overflow: hidden; margin-top: 6px; } .bar div { height: 100%; background: var(--cyan); width: 0; transition: width .3s; }
+.muted { color: var(--muted); font-size: 13px; }

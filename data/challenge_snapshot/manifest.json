@@ -1,0 +1,631 @@
+{
+ "generated_at": "2026-11-14T13:21:41+00:00",
+ "challenge_resources_tab": "see sources.RESOURCES_TAB",
+ "resources": [
+  {
+   "id": "nasa-hrp-hazards",
+   "agency": "NASA",
+   "title": "5 Hazards of Human Spaceflight",
+   "url": "https://www.nasa.gov/hrp/hazards/",
+   "tab_description": "Basic information from NASA's human research program on the main hazards that affect humans on space missions.",
+   "status": "downloaded",
+   "bytes": 315818,
+   "sha256": "cb2ff03e15ae9faa7763a7dcf038054d4c2750047c2d7017b8e73910bd47ac95",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "kind": "web page",
+   "retrieved_at": "2026-11-14T13:21:41+00:00"
+  },
+  {
+   "id": "nasa-hrp-risks",
+   "agency": "NASA",
+   "title": "Risks of Human Spaceflight",
+   "url": "https://www.nasa.gov/hrp/risks/",
+   "tab_description": "Basic information from NASA's human research program on the main risks faced by humans on space missions.",
+   "status": "downloaded",
+   "bytes": 325067,
+   "sha256": "5ae9ebf75cd1630a23e4e5af8a0b072a49f6e6b8e9e2d874285e6e7201308295",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "kind": "web page",
+   "retrieved_at": "2026-11-14T13:21:41+00:00"
+  },
+  {
+   "id": "nasa-hrp-ongoing",
+   "agency": "NASA",
+   "title": "Ongoing HRP Research in Space",
+   "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+   "tab_description": "Articles from ongoing research on NASA's human research program.",
+   "status": "downloaded",
+   "bytes": 342204,
+   "sha256": "fd3a309c3652568de081405e44385a3316f8398a31f95f0fcb113abc5f04bc74",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "kind": "web page",
+   "retrieved_at": "2026-11-14T13:21:41+00:00"
+  },
+  {
+   "id": "csa-radiation",
+   "agency": "CSA",
+   "title": "Monitoring Radiation for Astronaut Health",
+   "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+   "tab_description": "How the CSA monitors space radiation to protect astronaut health on long-duration missions.",
+   "status": "downloaded",
+   "bytes": 22994,
+   "sha256": "463db62b2d35636ae97c413a4be12ec77a0df6aef83bf4ed97cd1f099d3fd2e1",
+   "license": "Government of Canada (CSA) content - Crown copyright. Linked and summarised only; the full text is not redistributed.",
+   "kind": "web page",
+   "retrieved_at": "2026-11-14T13:21:41+00:00"
+  },
+  {
+   "id": "csa-why-science",
+   "agency": "CSA",
+   "title": "Why Do We Conduct Science Experiments in Space?",
+   "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+   "tab_description": "Why the unique environment of space is used for experiments that advance understanding of human health.",
+   "status": "downloaded",
+   "bytes": 25253,
+   "sha256": "2422322da9e8d10fc9f67e1cd4f4d7eb179238e5835e875224af6541973bbc20",
+   "license": "Government of Canada (CSA) content - Crown copyright. Linked and summarised only; the full text is not redistributed.",
+   "kind": "web page",
+   "retrieved_at": "2026-11-14T13:21:41+00:00"
+  }
+ ],
+ "subpages": [
+  {
+   "slug": "hazard-distance-from-earth",
+   "url": "https://www.nasa.gov/hrp/hazard-distance-from-earth/",
+   "title": "Hazard: Distance From Earth",
+   "status": "downloaded",
+   "bytes": 317557,
+   "sha256": "14f6918d4505e3c2b52354c33925f11a8a4fec91ef47b1102b08218d229aa910",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "hazard-gravity-fields",
+   "url": "https://www.nasa.gov/hrp/hazard-gravity-fields/",
+   "title": "Hazard: Gravity Fields",
+   "status": "downloaded",
+   "bytes": 315866,
+   "sha256": "5ce18fb3d7b9aa46a0f2d3dda34f1edfe94298d419910dc6236e6493af8ca520",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://humanresearchroadmap.nasa.gov/Evidence/reports/Fracture.pdf"
+   ]
+  },
+  {
+   "slug": "hazard-hostile-closed-environments",
+   "url": "https://www.nasa.gov/hrp/hazard-hostile-closed-environments/",
+   "title": "Hazard: Hostile/Closed Environments",
+   "status": "downloaded",
+   "bytes": 311437,
+   "sha256": "1adfd8d3e134cf33b4a9a37bb52ccccb394ac54b3476e04cc7a61b4e07ea1d4f",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "hazard-isolation-and-confinement",
+   "url": "https://www.nasa.gov/hrp/hazard-isolation-and-confinement/",
+   "title": "Hazard: Isolation and Confinement",
+   "status": "downloaded",
+   "bytes": 311908,
+   "sha256": "480ca392b569949a1f3fd86a7abbba0c63371d63c5dadfced61a7c9966089046",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "hazard-space-radiation",
+   "url": "https://www.nasa.gov/hrp/hazard-space-radiation/",
+   "title": "Hazard: Space Radiation",
+   "status": "downloaded",
+   "bytes": 319086,
+   "sha256": "ef3dd439fe7f94a71506cf0a55ef5a6e31e1951e876a9c05da7804538e05863a",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "human-factors-and-behavioral-performance",
+   "url": "https://www.nasa.gov/hrp/human-factors-and-behavioral-performance/",
+   "title": "Human Factors and Behavioral Performance",
+   "status": "downloaded",
+   "bytes": 335706,
+   "sha256": "1b327a921d22679e240776658a48f3b1e73db00d50506261c19f9cf7c6b86a0e",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://www.nasa.gov/wp-content/uploads/2026/08/hrp-rap-for-web-62026-hfbp.pdf"
+   ]
+  },
+  {
+   "slug": "human-health-countermeasures",
+   "url": "https://www.nasa.gov/hrp/human-health-countermeasures/",
+   "title": "Human Health Countermeasures",
+   "status": "downloaded",
+   "bytes": 349932,
+   "sha256": "8213ddb31c4325fdd653b8c7d4971e5a6aa76f0f05168e08a855efe0ef300a26",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://www.nasa.gov/wp-content/uploads/2026/08/hrp-rap-for-web-62026-hhc.pdf"
+   ]
+  },
+  {
+   "slug": "radiation",
+   "url": "https://www.nasa.gov/hrp/radiation/",
+   "title": "Space Radiation",
+   "status": "downloaded",
+   "bytes": 341134,
+   "sha256": "70705792f5f5332494ed5cc7c2a80013c45ba67351686c9036e5466c5bcadf0f",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://www.nasa.gov/wp-content/uploads/2026/08/hrp-rap-for-web-62026-sr.pdf"
+   ]
+  },
+  {
+   "slug": "archer",
+   "url": "https://www.nasa.gov/reference/archer/",
+   "title": "ARCHeR",
+   "status": "downloaded",
+   "bytes": 289837,
+   "sha256": "1779713436d01e90d224e3df08b188f54442989082d5269d7b01c1551d44a1f5",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "artemis-ii-standard-measures",
+   "url": "https://www.nasa.gov/reference/artemis-ii-standard-measures/",
+   "title": "Artemis II Standard Measures",
+   "status": "downloaded",
+   "bytes": 290243,
+   "sha256": "eb3fd162c22b116ff4eed4d34b26d79d5c738cfbf73f2a2425364dff95382674",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "b-complex",
+   "url": "https://www.nasa.gov/reference/b-complex/",
+   "title": "B-Complex",
+   "status": "downloaded",
+   "bytes": 295245,
+   "sha256": "7b39aec397136ae01dab31b3abe05ac4f684f46bfa4e6d4bf3f0d473dada7202",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "brain-fluid-pressure",
+   "url": "https://www.nasa.gov/reference/brain-fluid-pressure/",
+   "title": "Brain Fluid Pressure",
+   "status": "downloaded",
+   "bytes": 292951,
+   "sha256": "cb690f385f0f5cb40d38828fd11d3feb9edcc70283a4fa6f38f48a95c8bb3ba9",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "cipher",
+   "url": "https://www.nasa.gov/reference/cipher/",
+   "title": "CIPHER",
+   "status": "downloaded",
+   "bytes": 306875,
+   "sha256": "ec48cee9446d035e9ec58c20ce5e06cfc357eaab5885e702746bfd74fd0267a5",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "immune-biomarkers",
+   "url": "https://www.nasa.gov/reference/immune-biomarkers/",
+   "title": "Immune Biomarkers",
+   "status": "downloaded",
+   "bytes": 288796,
+   "sha256": "b219c80c3abdbfdcb408953d0dd062fe30ece9751bed54a98f1eb0a1b4036d16",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "omics-archive",
+   "url": "https://www.nasa.gov/reference/omics-archive/",
+   "title": "Omics archive",
+   "status": "downloaded",
+   "bytes": 293822,
+   "sha256": "465289c6868423e2f96e3e03e72f83929aa2efe79ba91d578aea9dde76c126a9",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-from-inadequate-sleep-and-irregular-schedules",
+   "url": "https://www.nasa.gov/reference/risk-from-inadequate-sleep-and-irregular-schedules/",
+   "title": "Risk from Inadequate Sleep and Irregular Schedules",
+   "status": "downloaded",
+   "bytes": 292946,
+   "sha256": "b86de54f976bd7acbbb737f68fc834db12129ceff1160af4202fc2edd250fb65",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-altered-immune-system-responses",
+   "url": "https://www.nasa.gov/reference/risk-of-altered-immune-system-responses/",
+   "title": "Risk of Altered Immune System Responses",
+   "status": "downloaded",
+   "bytes": 291335,
+   "sha256": "b755ae289bc118161c11538d0510d6ae5fff8ffef7aded6fa2a72cccfcfd8b84",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-altered-sensorimotor-and-vestibular-function",
+   "url": "https://www.nasa.gov/reference/risk-of-altered-sensorimotor-and-vestibular-function/",
+   "title": "Risk of Altered Sensorimotor and Vestibular Function",
+   "status": "downloaded",
+   "bytes": 291323,
+   "sha256": "139f2dea6f4cd56195dd751ae368c3976c1895a02720a00c1cc467886e6c256e",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-behavioral-conditions-and-psychiatric-disorders",
+   "url": "https://www.nasa.gov/reference/risk-of-behavioral-conditions-and-psychiatric-disorders/",
+   "title": "Risk of behavioral changes and psychiatric disorders",
+   "status": "downloaded",
+   "bytes": 291359,
+   "sha256": "a55e8444b94a5858e3e7307c5e4b745ad016df2b87dc0006da7fc95580ff6069",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-cardiovascular-adaptations",
+   "url": "https://www.nasa.gov/reference/risk-of-cardiovascular-adaptations/",
+   "title": "Risk of Cardiovascular Adaptations",
+   "status": "downloaded",
+   "bytes": 290579,
+   "sha256": "6fb66b93295d4d0fd1406c6c2b8bc27c95f4631a1296f790b4392fdffcecde75",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://humanresearchroadmap.nasa.gov/evidence/reports/Cardio%20Risk%20EB%202022%20FINAL_4-3-2023.pdf"
+   ]
+  },
+  {
+   "slug": "risk-of-decompression-sickness",
+   "url": "https://www.nasa.gov/reference/risk-of-decompression-sickness/",
+   "title": "Risk of Decompression Sickness",
+   "status": "downloaded",
+   "bytes": 292213,
+   "sha256": "d4ef3d40af4aaeccd1c2492fd5d50c193ba57774e7ff129c29f2a1af9e535c73",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-host-microorganism-interactions",
+   "url": "https://www.nasa.gov/reference/risk-of-host-microorganism-interactions/",
+   "title": "Risk of Host-Microorganism Interactions",
+   "status": "downloaded",
+   "bytes": 289998,
+   "sha256": "922d6625c2416acbe77cb6fd99bf79442e6193c850106549376304672e413910",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-hypoxia",
+   "url": "https://www.nasa.gov/reference/risk-of-hypoxia/",
+   "title": "Risk of Hypoxia",
+   "status": "downloaded",
+   "bytes": 289569,
+   "sha256": "45ca66808316b550e95b930251914e4712724a9548e9aab875184988a84b7645",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-inadequate-food-and-nutrition",
+   "url": "https://www.nasa.gov/reference/risk-of-inadequate-food-and-nutrition/",
+   "title": "Risk of Inadequate Food and Nutrition",
+   "status": "downloaded",
+   "bytes": 293252,
+   "sha256": "d459a6c20bfab2bce1fba8bc1c31312b4513993be0025983861e1ff234737bc0",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf"
+   ]
+  },
+  {
+   "slug": "risk-of-inadequate-systems-operations-support",
+   "url": "https://www.nasa.gov/reference/risk-of-inadequate-systems-operations-support/",
+   "title": "Risk of inadequate systems operations support",
+   "status": "downloaded",
+   "bytes": 290579,
+   "sha256": "7fd8364b6ffbd66081b536730b8788f3e7b8e7447ee0b5ebd8ef9cb315c05ab5",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://www.nasa.gov/wp-content/uploads/2015/10/160410main_space_training_fact_sheet.pdf"
+   ]
+  },
+  {
+   "slug": "risk-of-inadequate-teamwork",
+   "url": "https://www.nasa.gov/reference/risk-of-inadequate-teamwork/",
+   "title": "Risk of inadequate teamwork",
+   "status": "downloaded",
+   "bytes": 290563,
+   "sha256": "58d1549d5f0da709387c34709184869516e6f20c61dc97670a7ce0e58fa6b688",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-injury-and-compromised-performance-from-extravehicular-activity-eva",
+   "url": "https://www.nasa.gov/reference/risk-of-injury-and-compromised-performance-from-extravehicular-activity-eva/",
+   "title": "Risk of Injury and Compromised Performance from Spacewalks",
+   "status": "downloaded",
+   "bytes": 291137,
+   "sha256": "c9e5d330b2fe96d1d8262b6a9911a5f87fd33d9b689dd56651f13f44b62a0ba6",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-injury-from-dynamic-loads",
+   "url": "https://www.nasa.gov/reference/risk-of-injury-from-dynamic-loads/",
+   "title": "Risk of injury from dynamic loads",
+   "status": "downloaded",
+   "bytes": 290139,
+   "sha256": "e0f768f509b1e8a78c6c045fd2781fa6c354d680838773e27261bee2e0ac8911",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-radiation-induced-cancers",
+   "url": "https://www.nasa.gov/reference/risk-of-radiation-induced-cancers/",
+   "title": "Risk of radiation-induced cancers",
+   "status": "downloaded",
+   "bytes": 292339,
+   "sha256": "fd0b8fbb81bba01d9072e9b60cdf435145280e6299b00bcfbf77c5cde1be64c5",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://humanresearchroadmap.nasa.gov/evidence/reports/Degen.pdf"
+   ]
+  },
+  {
+   "slug": "risk-of-reduced-cardiorespiratory-and-musculoskeletal-fitness",
+   "url": "https://www.nasa.gov/reference/risk-of-reduced-cardiorespiratory-and-musculoskeletal-fitness/",
+   "title": "Risk of Reduced Cardiorespiratory and Musculoskeletal Fitness",
+   "status": "downloaded",
+   "bytes": 291787,
+   "sha256": "e20b57eeedadb8f6bcb8519e52e70a3eef57b07ceaa8ce5787d2e098d46c44cb",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-spaceflight-associated-neuro-ocular-syndrome-sans",
+   "url": "https://www.nasa.gov/reference/risk-of-spaceflight-associated-neuro-ocular-syndrome-sans/",
+   "title": "Risk of Spaceflight Associated Neuro-ocular Syndrome (SANS)",
+   "status": "downloaded",
+   "bytes": 291576,
+   "sha256": "5e464ed88d5b28b43e0db1acad37e758613fe6a61863a2c7d6ef8d593578e9cd",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "risk-of-spaceflight-induced-bone-changes",
+   "url": "https://www.nasa.gov/reference/risk-of-spaceflight-induced-bone-changes/",
+   "title": "Risk of Spaceflight-Induced Bone Changes",
+   "status": "downloaded",
+   "bytes": 289946,
+   "sha256": "86c350c56404e9342d252057567c2ec6f6311d69e18ec8774e15f1a2b21b8b91",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://www.nasa.gov/wp-content/uploads/2018/05/whatisyourspaceheight.pdf",
+    "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-030-bone-loss.pdf"
+   ]
+  },
+  {
+   "slug": "simulating-manual-piloting-for-moon-landings",
+   "url": "https://www.nasa.gov/reference/simulating-manual-piloting-for-moon-landings/",
+   "title": "Simulating Manual Piloting for Moon Landings",
+   "status": "downloaded",
+   "bytes": 294526,
+   "sha256": "b84fece73c39b27ab5f99a0ba2a1218dbfc03d1c20acc4402f18c1feca4c8712",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "spacecraft-occupant-protection",
+   "url": "https://www.nasa.gov/reference/spacecraft-occupant-protection/",
+   "title": "Spacecraft Occupant Protection",
+   "status": "downloaded",
+   "bytes": 295946,
+   "sha256": "fe931acbee07cfd54ebd3785bd228cde33e36cb6db98d6edbf3757227a5474d8",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "spinal-fluid-biomarkers",
+   "url": "https://www.nasa.gov/reference/spinal-fluid-biomarkers/",
+   "title": "Spinal Fluid Biomarkers",
+   "status": "downloaded",
+   "bytes": 292733,
+   "sha256": "9078a9359a574b806a4a595482af1957c6615d932dd8bf498de5ee934c37e868",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "standard-measures",
+   "url": "https://www.nasa.gov/reference/standard-measures/",
+   "title": "Standard Measures",
+   "status": "downloaded",
+   "bytes": 311580,
+   "sha256": "e71abe9924cdb967a77850e9af22d8137903cd6c9cd704867fa5aa5adf08dc5c",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "tempus-pro",
+   "url": "https://www.nasa.gov/reference/tempus-pro/",
+   "title": "Tempus Pro",
+   "status": "downloaded",
+   "bytes": 295257,
+   "sha256": "bf27300656a9edfc6dc70d9338b9f938f900f9de9ab69326cc040a675b3727c6",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "thigh-cuff",
+   "url": "https://www.nasa.gov/reference/thigh-cuff/",
+   "title": "Thigh Cuff",
+   "status": "downloaded",
+   "bytes": 298104,
+   "sha256": "f9bddc9a7a79d928476d2bff705cb6d3d981e247dfcb295c3a89c8719d581bb8",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  },
+  {
+   "slug": "venous-haemostasis",
+   "url": "https://www.nasa.gov/reference/venous-haemostasis/",
+   "title": "Venous Haemostasis",
+   "status": "downloaded",
+   "bytes": 297040,
+   "sha256": "278e395b21ce6cae797b6c3e4912647ae9d0c76a4d86f8c7070b27fa6328ec08",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": [
+    "https://www.nasa.gov/wp-content/uploads/2026/01/ochmo-mtb-007-venous-thrombosis-in-spaceflight.pdf",
+    "https://www.nasa.gov/wp-content/uploads/2026/06/hrp-rap-for-web-62026.pdf"
+   ]
+  },
+  {
+   "slug": "zero-t2",
+   "url": "https://www.nasa.gov/reference/zero-t2/",
+   "title": "Zero T2",
+   "status": "downloaded",
+   "bytes": 297467,
+   "sha256": "e4e9fd415b727674ae3f9aa00f2607765484ed3de93259e76cc42d0fa47aaf52",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source.",
+   "linked_documents": []
+  }
+ ],
+ "documents": [
+  {
+   "file": "Nutrition_ER_human_adaptation_2020_final.pdf",
+   "url": "https://humanresearchroadmap.nasa.gov/Evidence/other/Nutrition%20ER_human_adaptation_2020_final.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 8427572,
+   "sha256": "b339f6f882008450b18db998948a2b201ff3aa198ea1806d2c25fd87b54892ba",
+   "pages": 135,
+   "chars": 874851,
+   "opening_text": "Human Adaptation to Spaceflight: The Role of Food and Nutrition Second Edition Scott M. Smith Sara R. Zwart Grace L. Douglas Martina Heer National Aeronautics and Space Administration",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "Fracture.pdf",
+   "url": "https://humanresearchroadmap.nasa.gov/Evidence/reports/Fracture.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 753191,
+   "sha256": "6b1191a6e258037351dee256f3da64c078fc8c813c28a338c17a696ee199a450",
+   "pages": 34,
+   "chars": 82600,
+   "opening_text": "1 Evidence Report: Risk of Bone Fracture due to Spaceflight-induced Changes to Bone Human Research Program Exploration Medical Capabilities Element Approved for Public Release: May 12, 2017 National Aeronautics and Space Administration Lyndon B. Johnson Space Center Houston, Texas ",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "Cardio_Risk_EB_2022_FINAL_4-3-2023.pdf",
+   "url": "https://humanresearchroadmap.nasa.gov/evidence/reports/Cardio%20Risk%20EB%202022%20FINAL_4-3-2023.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 2065749,
+   "sha256": "70e4cd0e59029adee6cbe89817b9a6a39b0838b89d5291594e41478e9e080911",
+   "pages": 161,
+   "chars": 429664,
+   "opening_text": "Evidence Report: Risk of Cardiovascular Adaptations Contributing to Adverse Mission Performance and Health Outcomes Human Research Program Human Health and Countermeasures Element Approved for Public Release: December 15, 2022 National Aeronautics and Space Administration Lyndon B. Johnson Space Cen",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "Degen.pdf",
+   "url": "https://humanresearchroadmap.nasa.gov/evidence/reports/Degen.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 1260377,
+   "sha256": "e59e434585a406fc297bfd1c9a1014fb5672756da7856984bf1c33afffbc7d2b",
+   "pages": 52,
+   "chars": 129150,
+   "opening_text": " Evidence Report: Risk of Cardiovascular Disease and Other Degenerative Tissue Effects from Radiation Exposure Human Research Program Space Radiation Program Element Approved for Public Release: April 6, 2016 National Aeronautics and Space Administration Lyndon B. Johnson Space Center Houston, Texas",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "160410main_space_training_fact_sheet.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2015/10/160410main_space_training_fact_sheet.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 243223,
+   "sha256": "dcf2571e772c1d75abc0b45726307debd930e0005f1c6261b727a67ebd22c771",
+   "pages": 2,
+   "chars": 4793,
+   "opening_text": "National Aeronautics and Space Administration training for space Johnson Space Center Training for space Astronaut training and mission preparation Johnson Space Center is home to the nation’s astronaut corps and is responsible for preparing explorers from both the U.S. and its international partner",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "whatisyourspaceheight.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2018/05/whatisyourspaceheight.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 5943146,
+   "sha256": "6b6889df21b091e456eff91cd0c057263d171ce688778f8145bd54002cdcf91e",
+   "pages": 7,
+   "chars": 14426,
+   "opening_text": "4/25/2018 WHAT'S YOUR SPACE HEIGHT? https://www.printfriendly.com/p/g/4wnwKG 1/7 WHAT'S YOUR SPACE HEIGHT? trainlikeanastronaut.org/mission-data/html/whats-your-space-height Your Mission Problem: How can I find my space height? How tall are you? Are you sure you know the answer? Does your height cha",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "ochmo-tb-030-bone-loss.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-030-bone-loss.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 1631573,
+   "sha256": "3b86e09f0e47be4d57d2173f05c563d0387ff8bf67ac105a08167e33e7f5fc8e",
+   "pages": 26,
+   "chars": 68845,
+   "opening_text": "Bone Loss OCHMO-MTB-013 Rev D NASA-STD-3001 Medical Technical Brief Executive Summary Bone density loss in microgravity has been a well documented crew health concern since the Skylab missions when calcaneal mineral bone density loss was detected using single photon absorptiometry (1974-1985), and l",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "ochmo-mtb-007-venous-thrombosis-in-spaceflight.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2026/01/ochmo-mtb-007-venous-thrombosis-in-spaceflight.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 1480454,
+   "sha256": "d68f5c57ad22b940bd4209e8f9f116cc0ac62d7db64c54c6bd106973a1473c94",
+   "pages": 18,
+   "chars": 34429,
+   "opening_text": "Venous Thrombosis in Spaceflight OCHMO-MTB-007 NASA-STD-3001 Medical Technical Brief Executive Summary Altered blood flow has been identified in the internal jugular veins (IJVs) of crewmembers concomitant with vessel distension. Inflight ultrasound has revealed that flow in the left IJV may be: (a)",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "hrp-rap-for-web-62026.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2026/06/hrp-rap-for-web-62026.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 1238093,
+   "sha256": "d4e77d646fa6e48561e8df6ff6c12112d6ccfae97de0589fe76314c2579a90ac",
+   "pages": 14,
+   "chars": 17150,
+   "opening_text": "HRP Risk Approach Plans June 2026",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "hrp-rap-for-web-62026-hfbp.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2026/08/hrp-rap-for-web-62026-hfbp.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 940585,
+   "sha256": "3a1f031819254546ed19faee3a1aa201da723eaae873ff96c492447ee9cb8217",
+   "pages": 6,
+   "chars": 7368,
+   "opening_text": "June 2026 HRP Risk Approach Plans For the Human Factors and Behavioral Control Element",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "hrp-rap-for-web-62026-hhc.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2026/08/hrp-rap-for-web-62026-hhc.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 1222080,
+   "sha256": "ce4b826ec112bd85aa5d564ee9815d4bf6d0abda864a8e8cddc052dd5f34c24e",
+   "pages": 9,
+   "chars": 9021,
+   "opening_text": "June 2026 HRP Risk Approach Plans For the Human Health Countermeasures Element",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  },
+  {
+   "file": "hrp-rap-for-web-62026-sr.pdf",
+   "url": "https://www.nasa.gov/wp-content/uploads/2026/08/hrp-rap-for-web-62026-sr.pdf",
+   "status": "downloaded+parsed",
+   "bytes": 843762,
+   "sha256": "b0b54c5028e3e601a816d63e332c6539d10f33f88f2a18b77f3e00051334c66a",
+   "pages": 3,
+   "chars": 1989,
+   "opening_text": "June 2026 HRP Risk Approach Plans For the Space Radiation Element",
+   "license": "NASA content is generally not subject to copyright in the United States (NASA media usage guidelines). Cite NASA as the source."
+  }
+ ],
+ "datasets": [],
+ "datasets_note": "The Resources tab contains no downloadable datasets. Studies described there (e.g. Spaceflight Standard Measures, CIPHER, Omics Archive) keep crew data in controlled-access archives that require a formal data request."
+}

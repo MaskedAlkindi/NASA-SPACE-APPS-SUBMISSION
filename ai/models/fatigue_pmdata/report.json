@@ -1,0 +1,193 @@
+{
+ "model_id": "fatigue_pmdata",
+ "dataset": "PMData",
+ "trained_at": "2026-11-14T14:58:30+00:00",
+ "sklearn_version": "1.5.2",
+ "subjects": 16,
+ "label_direction_check_spearman_vs_readiness": {
+  "fatigue": 0.399,
+  "stress": 0.099
+ },
+ "label_definitions": {
+  "tired": "PMSys fatigue <= 2 (1 = very tired ... 5 = very fresh; 3 = normal)",
+  "stressed": "PMSys stress <= 2 (1 = very stressed ... 5 = relaxed; 3 = normal)"
+ },
+ "evaluation": "leave-one-subject-out over all participants; pooled and within-person AUC",
+ "results": {
+  "tired": {
+   "wearable/logistic": {
+    "n_days": 1659,
+    "positives": 544,
+    "auc_pooled": 0.505,
+    "auc_within_person_median": 0.559,
+    "balanced_accuracy@0.5": 0.5,
+    "brier": 0.2615,
+    "base_rate": 0.328
+   },
+   "wearable/gbm": {
+    "n_days": 1659,
+    "positives": 544,
+    "auc_pooled": 0.545,
+    "auc_within_person_median": 0.586,
+    "balanced_accuracy@0.5": 0.537,
+    "brier": 0.2552,
+    "base_rate": 0.328
+   },
+   "wearable+yesterday_report/logistic": {
+    "n_days": 1659,
+    "positives": 544,
+    "auc_pooled": 0.582,
+    "auc_within_person_median": 0.621,
+    "balanced_accuracy@0.5": 0.571,
+    "brier": 0.2489,
+    "base_rate": 0.328
+   },
+   "wearable+yesterday_report/gbm": {
+    "n_days": 1659,
+    "positives": 544,
+    "auc_pooled": 0.621,
+    "auc_within_person_median": 0.612,
+    "balanced_accuracy@0.5": 0.59,
+    "brier": 0.2368,
+    "base_rate": 0.328
+   },
+   "baseline/yesterday_report": {
+    "n_days": 1659,
+    "positives": 544,
+    "auc_pooled": 0.615,
+    "auc_within_person_median": 0.572,
+    "balanced_accuracy@0.5": 0.607,
+    "brier": 0.3175,
+    "base_rate": 0.328
+   },
+   "baseline/constant": {
+    "auc_pooled": 0.5,
+    "base_rate": 0.328
+   }
+  },
+  "stressed": {
+   "wearable/logistic": {
+    "n_days": 1659,
+    "positives": 406,
+    "auc_pooled": 0.548,
+    "auc_within_person_median": 0.57,
+    "balanced_accuracy@0.5": 0.549,
+    "brier": 0.261,
+    "base_rate": 0.245
+   },
+   "wearable/gbm": {
+    "n_days": 1659,
+    "positives": 406,
+    "auc_pooled": 0.535,
+    "auc_within_person_median": 0.552,
+    "balanced_accuracy@0.5": 0.526,
+    "brier": 0.2533,
+    "base_rate": 0.245
+   },
+   "wearable+yesterday_report/logistic": {
+    "n_days": 1659,
+    "positives": 406,
+    "auc_pooled": 0.649,
+    "auc_within_person_median": 0.61,
+    "balanced_accuracy@0.5": 0.619,
+    "brier": 0.2342,
+    "base_rate": 0.245
+   },
+   "wearable+yesterday_report/gbm": {
+    "n_days": 1659,
+    "positives": 406,
+    "auc_pooled": 0.64,
+    "auc_within_person_median": 0.643,
+    "balanced_accuracy@0.5": 0.619,
+    "brier": 0.2158,
+    "base_rate": 0.245
+   },
+   "baseline/yesterday_report": {
+    "n_days": 1659,
+    "positives": 406,
+    "auc_pooled": 0.682,
+    "auc_within_person_median": 0.626,
+    "balanced_accuracy@0.5": 0.671,
+    "brier": 0.2207,
+    "base_rate": 0.245
+   },
+   "baseline/constant": {
+    "auc_pooled": 0.5,
+    "base_rate": 0.245
+   }
+  }
+ },
+ "deployed": {
+  "tired": {
+   "kind": "gbm",
+   "loso": {
+    "n_days": 1659,
+    "positives": 544,
+    "auc_pooled": 0.545,
+    "auc_within_person_median": 0.586,
+    "balanced_accuracy@0.5": 0.537,
+    "brier": 0.2552,
+    "base_rate": 0.328
+   },
+   "coefficients": null
+  },
+  "stressed": {
+   "kind": "logistic",
+   "loso": {
+    "n_days": 1659,
+    "positives": 406,
+    "auc_pooled": 0.548,
+    "auc_within_person_median": 0.57,
+    "balanced_accuracy@0.5": 0.549,
+    "brier": 0.261,
+    "base_rate": 0.245
+   },
+   "coefficients": {
+    "rhr_z": 0.298,
+    "rhr_delta": -0.334,
+    "sleep_h": 0.013,
+    "sleep_z": -0.122,
+    "sleep_debt_3d": 0.2,
+    "sleep_eff": -0.076,
+    "midpoint_sd_3d": -0.093,
+    "steps_z": -0.086,
+    "exercise_prev": -0.041,
+    "exercise_7d": -0.304,
+    "exercise_z": 0.14,
+    "missing_rhr_z": 0.09,
+    "missing_rhr_delta": 0.09,
+    "missing_sleep_h": 0.129,
+    "missing_sleep_z": -0.244,
+    "missing_sleep_debt_3d": 0.238,
+    "missing_sleep_eff": 0.129,
+    "missing_midpoint_sd_3d": -0.374,
+    "missing_steps_z": 0.021,
+    "missing_exercise_7d": -0.164,
+    "missing_exercise_z": -0.149
+   }
+  }
+ },
+ "provenance_sha256": {
+  "p01/pmsys/wellness.csv": "9dc6e6c0bd33487d4621ac4cf26a4f10b150d30a4bb1179b2b52f4396b1cde2e",
+  "p02/pmsys/wellness.csv": "0175eeb76a0ababbe55e413dec70768644c02a991afea672a6b0e979bbdafa09",
+  "p03/pmsys/wellness.csv": "e951fa6f4d4932df8dade879b5800e2bbb470b94eebfeb05dff508e3780032c4",
+  "p04/pmsys/wellness.csv": "6a431a635071cf9a5ebbc20eb7122847f20f8a1472fb1c96573fa5a846393db2",
+  "p05/pmsys/wellness.csv": "c1f6e1f492436450ee74bcac66265143d9c11d7fa4ea293a0067a2c642955420",
+  "p06/pmsys/wellness.csv": "a60a0f533de146b5ca0558164b772a5ad738fd4c1f7795a0135246b7e3a31e8e",
+  "p07/pmsys/wellness.csv": "f33a14b06ccf6393895322391df5d3c0d6ea113322c5c9a7671c46bb22993897",
+  "p08/pmsys/wellness.csv": "a4474f816d00ad23ba63887619383fb5530ec7dd955e19940fa73115767bdc7b",
+  "p09/pmsys/wellness.csv": "77f4fcd0222bdb37d85b0991620851104f5d383c6aa9d2b5e2230805917baa4d",
+  "p10/pmsys/wellness.csv": "b4fefbdfbb8f0ec7178c0cc83efcc03a2f68ebe227e11e67a5471cd25840aab1",
+  "p11/pmsys/wellness.csv": "d2793ccb5ead696090e539a9849b91a170b4e9cd622f9745d50c0925fd73ede8",
+  "p12/pmsys/wellness.csv": "3c5e213a9c4de3a35744a81469ca1ba2db9e1e3f66ec0a0a06161c653cdbf731",
+  "p13/pmsys/wellness.csv": "14640f075ac0aa5c0e5deffcc3b888142d9b9d0752d50cb40e968cdd5b18ae16",
+  "p14/pmsys/wellness.csv": "61cfd166d45db134bb27ae1549d2748e18bce4ad0c18137362d3965e3f5152e5",
+  "p15/pmsys/wellness.csv": "d0a06ced1b229e6972c1342f378f518587302f0cc23b71c5f34f816f4d4226ad",
+  "p16/pmsys/wellness.csv": "991e1ffc3784f744613f42228c2c57de5e082535a536942b5ede9ac8befef082"
+ },
+ "limitations": [
+  "16 healthy adults (Norway), Fitbit Versa 2: small, Earth-based, not astronauts.",
+  "Self-reported labels; 'tired' means more tired than that person's normal.",
+  "Fitbit active minutes stand in for 'exercise minutes'; device differences are not modelled."
+ ]
+}

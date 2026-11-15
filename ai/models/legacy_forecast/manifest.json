@@ -1,0 +1,59 @@
+{
+ "id": "legacy_forecast",
+ "name": "7-day trend forecast (original)",
+ "version": "1.0.0",
+ "category": "forecast",
+ "description": "Damped Holt forecasts of resting HR, sleep and HRV with 80% intervals.",
+ "intended_use": "Trend context.",
+ "entrypoint": "ai.models.legacy_wrappers:LegacyForecast",
+ "inputs": [
+  {
+   "metric": "resting_heart_rate",
+   "unit": "bpm",
+   "required": true,
+   "min_days": 10,
+   "max_staleness_days": 3
+  }
+ ],
+ "outputs": {
+  "series": "forecast points per metric"
+ },
+ "supported_indicators": [
+  "heart rate",
+  "daily sleep hours"
+ ],
+ "alerting": {
+  "emit_alerts": false,
+  "min_severity": "caution",
+  "cooldown_hours": 24,
+  "thresholds": {}
+ },
+ "evidence_level": "simulation",
+ "validated_on_astronauts": false,
+ "status": "ready",
+ "artifact": null,
+ "report": null,
+ "enabled_by_default": true,
+ "datasets": [
+  {
+   "name": "Synthetic crew generator (ml/datasets/synthetic.py)",
+   "source": "this repository",
+   "license": "project licence",
+   "population": "simulated",
+   "astronaut_data": false,
+   "simulated": true
+  }
+ ],
+ "execution": {
+  "environments": [
+   "server",
+   "desktop"
+  ],
+  "provider": "local",
+  "timeout_s": 10,
+  "memory_mb": 100,
+  "requires": [
+   "scikit-learn==1.5.2"
+  ]
+ }
+}

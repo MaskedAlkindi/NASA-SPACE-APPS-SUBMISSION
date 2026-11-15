@@ -1,0 +1,42 @@
+# HEALTH-01 on a big GPU server: Ollama (bigger models) + the fine-tuning trainer.
+# Both listen on 127.0.0.1 only; reach them from your PC through an SSH tunnel (docs/llm/GPU_SERVER.md).
+#   cd deploy/gpu-server && HMT_TRAINER_TOKEN=... docker compose up -d --build
+services:
+  ollama:
+    image: ollama/ollama:0.20.7
+    restart: unless-stopped
+    ports: ["127.0.0.1:11434:11434"]
+    environment:
+      OLLAMA_KEEP_ALIVE: 30m
+    volumes: [ollama_models:/root/.ollama]
+    deploy:
+      resources:
+        reservations:
+          devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+  trainer:
+    build:
+      context: ../..
+      dockerfile: llm/Dockerfile.trainer
+    restart: unless-stopped
+    depends_on: [ollama]
+    ports: ["127.0.0.1:8600:8600"]
+    environment:
+      HMT_TRAINER_TOKEN: ${HMT_TRAINER_TOKEN:?set HMT_TRAINER_TOKEN}
+      HMT_OLLAMA_URL: http://ollama:11434
+      HMT_LLM_DATA: /data/llm
+      HF_HOME: /data/hf_cache
+      HF_TOKEN: ${HF_TOKEN:-}
+      HMT_DEVICE_MAP: ${HMT_DEVICE_MAP:-}      # "auto" spreads one model over several GPUs
+    shm_size: 16gb
+    volumes:
+      - ../../data/llm:/data/llm
+      - hf_cache:/data/hf_cache
+    deploy:
+      resources:
+        reservations:
+          devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+volumes:
+  ollama_models:
+  hf_cache:

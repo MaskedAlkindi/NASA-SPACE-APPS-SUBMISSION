@@ -1,0 +1,123 @@
+{
+ "description": "What the exercise module may consume from the AI engine.",
+ "properties": {
+  "schema_version": {
+   "const": "exercise_guidance.v1",
+   "default": "exercise_guidance.v1",
+   "title": "Schema Version",
+   "type": "string"
+  },
+  "astronaut_id": {
+   "title": "Astronaut Id",
+   "type": "string"
+  },
+  "generated_at": {
+   "format": "date-time",
+   "title": "Generated At",
+   "type": "string"
+  },
+  "readiness": {
+   "enum": [
+    "proceed",
+    "reduce_intensity",
+    "rest_and_recheck",
+    "insufficient_data"
+   ],
+   "title": "Readiness",
+   "type": "string"
+  },
+  "recommendation": {
+   "title": "Recommendation",
+   "type": "string"
+  },
+  "rationale": {
+   "items": {
+    "type": "string"
+   },
+   "title": "Rationale",
+   "type": "array"
+  },
+  "fatigue": {
+   "anyOf": [
+    {
+     "type": "object"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Fatigue"
+  },
+  "sleep": {
+   "anyOf": [
+    {
+     "type": "object"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Sleep"
+  },
+  "anomalies": {
+   "default": [],
+   "items": {
+    "type": "object"
+   },
+   "title": "Anomalies",
+   "type": "array"
+  },
+  "active_alerts": {
+   "default": [],
+   "items": {
+    "type": "object"
+   },
+   "title": "Active Alerts",
+   "type": "array"
+  },
+  "adherence_14d": {
+   "anyOf": [
+    {
+     "type": "object"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Adherence 14D"
+  },
+  "source_models": {
+   "default": [],
+   "items": {
+    "type": "string"
+   },
+   "title": "Source Models",
+   "type": "array"
+  },
+  "limitations": {
+   "default": [],
+   "items": {
+    "type": "string"
+   },
+   "title": "Limitations",
+   "type": "array"
+  },
+  "not_medical_advice": {
+   "default": true,
+   "title": "Not Medical Advice",
+   "type": "boolean"
+  }
+ },
+ "required": [
+  "astronaut_id",
+  "generated_at",
+  "readiness",
+  "recommendation",
+  "rationale"
+ ],
+ "title": "ExerciseGuidanceV1",
+ "type": "object"
+}

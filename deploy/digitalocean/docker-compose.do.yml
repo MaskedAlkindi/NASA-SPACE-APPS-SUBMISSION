@@ -1,0 +1,70 @@
+# Online demo on a DigitalOcean GPU Droplet (or any Linux server with an NVIDIA GPU).
+# Layered on top of the main compose file:
+#   docker compose -f docker-compose.yml -f deploy/digitalocean/docker-compose.do.yml up -d --build
+# Adds: Ollama (LLM inference on the GPU), the fine-tuning trainer, and Caddy (HTTPS in front of the website).
+# deploy/digitalocean/setup.sh writes the .env this needs.
+
+services:
+  api:
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      HMT_LLM_TRAINER_URL: http://trainer:8600
+      HMT_TRAINER_TOKEN: ${HMT_TRAINER_TOKEN:?run setup.sh}
+      SITE_PASSWORD: ${SITE_PASSWORD:-}
+    depends_on:
+      ollama:
+        condition: service_started
+
+  web:
+    build:
+      args:
+        VITE_EDITION: ${WEB_EDITION:-notebook}
+        NGINX_CONF: ${WEB_NGINX_CONF:-nginx.conf}
+
+  ollama:
+    image: ollama/ollama:0.20.7
+    restart: unless-stopped
+    volumes:
+      - ollama_models:/root/.ollama
+    environment:
+      OLLAMA_KEEP_ALIVE: 30m
+    deploy:
+      resources:
+        reservations:
+          devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+  trainer:
+    build:
+      context: .
+      dockerfile: llm/Dockerfile.trainer
+    restart: unless-stopped
+    environment:
+      HMT_TRAINER_TOKEN: ${HMT_TRAINER_TOKEN:?run setup.sh}
+      HMT_OLLAMA_URL: http://ollama:11434
+      HMT_LLM_DATA: /data/llm
+      HF_HOME: /data/hf_cache
+    volumes:
+      - ${LLM_DATA_MOUNT:-./data/llm}:/data/llm
+      - hf_cache:/data/hf_cache
+    deploy:
+      resources:
+        reservations:
+          devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+  caddy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    depends_on: [web]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:-:80}
+    volumes:
+      - ./deploy/digitalocean/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+
+volumes:
+  ollama_models:
+  hf_cache:
+  caddy_data:

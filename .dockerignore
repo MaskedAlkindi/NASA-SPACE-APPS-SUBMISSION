@@ -1,0 +1,22 @@
+.git
+.venv
+**/__pycache__
+**/.pytest_cache
+*.db
+scratch_*
+.env
+web/node_modules
+web/dist
+android
+ios
+data/nasa_cache
+data/challenge_cache
+ml/artifacts/*.joblib
+ml/artifacts/*.json
+ailife references
+data/external
+ai/tests
+**/__pycache__
+data/llm
+**/node_modules
+desktop/dist

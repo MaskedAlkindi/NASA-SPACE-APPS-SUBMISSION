@@ -1,0 +1,9 @@
+# CPU-only droplet: no GPU reservations, no trainer. Ollama runs a small model on the CPU.
+services:
+  ollama:
+    deploy: !reset {}
+  trainer:
+    profiles: ["gpu-only"]
+  api:
+    environment:
+      HMT_LLM_TRAINER_URL: ""

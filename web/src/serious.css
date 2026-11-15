@@ -1,0 +1,3 @@
+/* "serious" edition: same sketch look, fewer words. Built with VITE_EDITION=serious (deploy/serious/). */
+[data-edition="serious"] .page-head p,
+[data-edition="serious"] .hint { display: none; }

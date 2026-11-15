@@ -1,0 +1,71 @@
+{
+ "id": "legacy_fatigue_sim",
+ "name": "Fatigue estimate (original, simulation model)",
+ "version": "1.0.0",
+ "category": "fatigue_simulated",
+ "description": "Samn-Perelli 1-7 fatigue estimate trained on synthetic labels.",
+ "intended_use": "Demonstration only.",
+ "entrypoint": "ai.models.legacy_wrappers:LegacyFatigueSim",
+ "inputs": [
+  {
+   "metric": "sleep_duration",
+   "unit": "h",
+   "required": true,
+   "min_days": 3,
+   "max_staleness_days": 2
+  },
+  {
+   "metric": "workload_tlx",
+   "unit": "score 0-100",
+   "required": false,
+   "max_staleness_days": 2
+  },
+  {
+   "metric": "fatigue_score",
+   "unit": "score 1-7",
+   "required": false,
+   "max_staleness_days": 3
+  }
+ ],
+ "outputs": {
+  "inputs": "feature values",
+  "missing": "missing inputs"
+ },
+ "supported_indicators": [
+  "fatigue"
+ ],
+ "alerting": {
+  "emit_alerts": false,
+  "min_severity": "caution",
+  "cooldown_hours": 24,
+  "thresholds": {}
+ },
+ "evidence_level": "simulation",
+ "validated_on_astronauts": false,
+ "status": "ready",
+ "artifact": null,
+ "report": null,
+ "enabled_by_default": true,
+ "datasets": [
+  {
+   "name": "Synthetic crew generator (ml/datasets/synthetic.py)",
+   "source": "this repository",
+   "license": "project licence",
+   "population": "simulated",
+   "astronaut_data": false,
+   "simulated": true
+  }
+ ],
+ "execution": {
+  "environments": [
+   "server",
+   "desktop"
+  ],
+  "provider": "local",
+  "timeout_s": 10,
+  "memory_mb": 100,
+  "requires": [
+   "scikit-learn==1.5.2"
+  ]
+ }
+}

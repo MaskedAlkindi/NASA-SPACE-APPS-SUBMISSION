@@ -1,0 +1,41 @@
+.env
+.claude/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+scratch_*
+
+# runtime caches / generated artifacts (rebuilt by `python -m ml.training.train_all` or the Docker build)
+data/nasa_cache/*
+!data/nasa_cache/.gitkeep
+ml/artifacts/*.joblib
+ml/artifacts/forecast_holt_v1.json
+
+# web
+web/node_modules/
+web/dist/
+
+# android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+*.iml
+
+# ios
+ios/**/xcuserdata/
+ios/build/
+ios/DerivedData/
+.DS_Store
+
+*.tsbuildinfo
+data/challenge_cache/
+data/imported_models/
+data/external/
+scratch_osf/
+
+# LLM corpus, datasets, runs, evaluations and RAG index: local only
+data/llm/

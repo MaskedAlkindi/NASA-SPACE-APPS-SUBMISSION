@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c0f1c" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>HEALTH-01 · unlock</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Kalam:wght@400;700&display=swap" />
+  <style>
+    :root {
+      --ink: #ece7dc; --muted: #a9b0c0; --chalk: rgba(236, 231, 220, .85);
+      --night: #0c0f1c; --cyan: #8fdcec; --red: #ff6b4a;
+      --hand: "Kalam", "Patrick Hand", cursive; --display: "Patrick Hand", "Kalam", cursive;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--ink); font: 19px/1.5 var(--hand);
+      background: var(--night);
+      background-image:
+        radial-gradient(rgba(255,255,255,.55) 1px, transparent 1.4px),
+        radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.4px),
+        repeating-linear-gradient(0deg, transparent 0 31px, rgba(236,231,220,.035) 31px 32px);
+      background-size: 180px 180px, 110px 110px, auto;
+      background-position: 0 0, 50px 70px, 0 0;
+    }
+    body::before {
+      content: ""; position: fixed; top: 0; bottom: 0; left: 4.2%;
+      border-left: 2px solid rgba(255, 107, 74, .22); pointer-events: none;
+    }
+    a { color: inherit; }
+    .gate { max-width: 460px; margin: 0 auto; padding: 64px 22px 40px; }
+    .word { display: flex; align-items: center; gap: 12px; text-decoration: none; font: 32px/1 var(--display); }
+    .word img { width: 50px; height: 50px; background: #fff; border-radius: 50%; padding: 2px; transform: rotate(-6deg); }
+    .word em { color: var(--red); font-style: normal; }
+    h1 { font: 400 clamp(40px, 8vw, 58px)/1.05 var(--display); margin: 36px 0 10px; }
+    p { margin: 0 0 22px; color: #d5d0c4; }
+    form { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+    label { display: flex; flex-direction: column; gap: 6px; width: min(100%, 320px); color: var(--muted); }
+    input {
+      font: 22px/1.2 var(--hand); color: var(--ink); background: rgba(21, 26, 44, .75);
+      border: 2px solid var(--chalk); border-radius: 4px 10px 6px 12px; padding: 10px 14px; width: 100%;
+    }
+    input:focus { outline: none; border-color: var(--cyan); }
+    button {
+      font: 26px/1.2 var(--display); color: var(--cyan); background: rgba(143, 220, 236, .12);
+      border: 2.5px solid var(--cyan); border-radius: 4px 12px 6px 10px; padding: 10px 22px; cursor: pointer;
+    }
+    button:hover { transform: rotate(-1.5deg); }
+    .err { color: var(--red); min-height: 1.4em; margin: 0; }
+    .back { color: var(--muted); font-size: 16px; }
+    @media (max-width: 480px) { body::before { display: none; } .gate { padding-top: 28px; } }
+  </style>
+</head>
+<body>
+  <main class="gate">
+    <a class="word" href="/">
+      <img src="/logo.png" alt="" width="50" height="50" />
+      <span>HEALTH<em>-</em>01</span>
+    </a>
+    <h1>the demo is locked.</h1>
+    <p>the notebook out front is public. this password opens the demo behind it.</p>
+    <form method="post" action="/api/v1/site/unlock">
+      <label>password
+        <input type="password" name="password" autocomplete="current-password" required autofocus />
+      </label>
+      <button type="submit">open the demo</button>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+    <a class="back" href="/">← back to the notebook</a>
+  </main>
+  <script>
+    const code = new URLSearchParams(location.search).get("e");
+    const msg = code === "1" ? "that password didn't open it."
+      : code === "2" ? "too many tries. wait a minute, then try again." : "";
+    if (msg) document.getElementById("err").textContent = msg;
+  </script>
+</body>
+</html>

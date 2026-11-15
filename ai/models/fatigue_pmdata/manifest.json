@@ -1,0 +1,33 @@
+{
+  "id": "fatigue_pmdata",
+  "name": "Fatigue & stress from wearables (PMData)",
+  "version": "1.0.0",
+  "category": "fatigue",
+  "description": "Estimates the chance of a more-tired-than-usual (and more-stressed-than-usual) day from resting HR, sleep and activity relative to the person's own baseline. Trained on real self-reports.",
+  "intended_use": "Weak hint and a prompt to complete a fatigue check-in; feeds conservative exercise guidance.",
+  "not_intended_for": "Measuring fatigue; fitness-for-duty decisions; diagnosis.",
+  "entrypoint": "ai.models.fatigue_pmdata.model:FatiguePMData",
+  "inputs": [
+    {"metric": "resting_heart_rate", "unit": "bpm", "required": true, "min_days": 8, "max_staleness_days": 2},
+    {"metric": "sleep_duration", "unit": "h", "required": true, "min_days": 8, "max_staleness_days": 2},
+    {"metric": "sleep_efficiency", "unit": "%", "required": false, "max_staleness_days": 2},
+    {"metric": "sleep_midpoint", "unit": "h", "required": false, "max_staleness_days": 2},
+    {"metric": "steps", "unit": "count", "required": false, "max_staleness_days": 2},
+    {"metric": "exercise_minutes", "unit": "min", "required": false, "max_staleness_days": 2}
+  ],
+  "outputs": {"p_more_tired_than_usual": "probability 0-1", "p_more_stressed_than_usual": "probability 0-1", "features": "feature values used"},
+  "supported_indicators": ["fatigue", "stress", "daily sleep hours", "heart rate"],
+  "datasets": [{"name": "PMData", "source": "https://datasets.simula.no/pmdata",
+                "license": "CC BY-NC 4.0 per OSF licence.txt (Simula page states CC BY 4.0; stricter terms applied)",
+                "citation": "Thambawita V. et al. PMData: A Sports Logging Dataset. MMSys '20. doi:10.1145/3339825.3394926",
+                "population": "16 healthy adults, Norway", "astronaut_data": false, "simulated": false,
+                "provenance_file": "data/external/pmdata/PROVENANCE.json"}],
+  "evidence_level": "earth_research",
+  "validated_on_astronauts": false,
+  "status": "ready",
+  "artifact": "artifacts/fatigue_pmdata_v1.joblib",
+  "report": "report.json",
+  "enabled_by_default": true,
+  "execution": {"environments": ["server", "desktop"], "provider": "local", "timeout_s": 10, "memory_mb": 100, "requires": ["scikit-learn==1.5.2"]},
+  "alerting": {"emit_alerts": true, "min_severity": "caution", "cooldown_hours": 24, "thresholds": {"info_probability": 0.6}}
+}

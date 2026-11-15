@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'" />
+  <title>HEALTH-01 · Connect</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main>
+  <header>
+    <img src="../assets/icon.png" alt="Team Amerat 01 logo" />
+    <div><h1>HEALTH-01</h1><p class="sub">Choose which HEALTH-01 server this app shows.</p></div>
+  </header>
+
+  <section>
+    <h2>Servers</h2>
+    <div id="servers"></div>
+  </section>
+
+  <section>
+    <h2>Add a server</h2>
+    <div class="row">
+      <input id="url" placeholder="http://192.168.1.20:8080 or https://health01.example.org" />
+      <button class="primary" id="add">Connect</button>
+    </div>
+    <p class="muted">Any HEALTH-01 server works: your own computer, a crew server on the network, or the online demo.</p>
+  </section>
+
+  <section>
+    <h2>Run it on this computer</h2>
+    <div class="row">
+      <button id="start">Start local stack (Docker)</button>
+      <button id="models">Local AI models…</button>
+    </div>
+    <pre id="log" hidden></pre>
+  </section>
+</main>
+<script src="connect.js"></script>
+</body>
+</html>

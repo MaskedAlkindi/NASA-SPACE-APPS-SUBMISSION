@@ -1,0 +1,5 @@
+# DOMAIN=demo.example.org gets an automatic HTTPS certificate; DOMAIN=:80 serves plain HTTP on the droplet IP.
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy web:80
+}

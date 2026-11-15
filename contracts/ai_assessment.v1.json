@@ -1,0 +1,208 @@
+{
+ "$defs": {
+  "Contribution": {
+   "properties": {
+    "metric": {
+     "title": "Metric",
+     "type": "string"
+    },
+    "value": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Value"
+    },
+    "unit": {
+     "default": "",
+     "title": "Unit",
+     "type": "string"
+    },
+    "baseline": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Baseline"
+    },
+    "deviation": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Deviation"
+    },
+    "note": {
+     "default": "",
+     "title": "Note",
+     "type": "string"
+    }
+   },
+   "required": [
+    "metric"
+   ],
+   "title": "Contribution",
+   "type": "object"
+  }
+ },
+ "properties": {
+  "astronaut_id": {
+   "title": "Astronaut Id",
+   "type": "string"
+  },
+  "model_id": {
+   "title": "Model Id",
+   "type": "string"
+  },
+  "model_version": {
+   "title": "Model Version",
+   "type": "string"
+  },
+  "assessed_at": {
+   "format": "date-time",
+   "title": "Assessed At",
+   "type": "string"
+  },
+  "data_as_of": {
+   "anyOf": [
+    {
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Data As Of"
+  },
+  "status": {
+   "enum": [
+    "ok",
+    "insufficient_data",
+    "abstained",
+    "error",
+    "disabled"
+   ],
+   "title": "Status",
+   "type": "string"
+  },
+  "category": {
+   "title": "Category",
+   "type": "string"
+  },
+  "severity": {
+   "default": "none",
+   "enum": [
+    "none",
+    "info",
+    "caution",
+    "warning"
+   ],
+   "title": "Severity",
+   "type": "string"
+  },
+  "score": {
+   "anyOf": [
+    {
+     "type": "number"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Score"
+  },
+  "score_label": {
+   "default": "",
+   "title": "Score Label",
+   "type": "string"
+  },
+  "scale": {
+   "default": "",
+   "title": "Scale",
+   "type": "string"
+  },
+  "uncertainty": {
+   "default": {},
+   "title": "Uncertainty",
+   "type": "object"
+  },
+  "calibration": {
+   "default": "",
+   "title": "Calibration",
+   "type": "string"
+  },
+  "explanation": {
+   "default": "",
+   "title": "Explanation",
+   "type": "string"
+  },
+  "contributing": {
+   "default": [],
+   "items": {
+    "$ref": "#/$defs/Contribution"
+   },
+   "title": "Contributing",
+   "type": "array"
+  },
+  "recommendation": {
+   "default": "",
+   "title": "Recommendation",
+   "type": "string"
+  },
+  "data_quality": {
+   "default": {},
+   "title": "Data Quality",
+   "type": "object"
+  },
+  "limitations": {
+   "default": [],
+   "items": {
+    "type": "string"
+   },
+   "title": "Limitations",
+   "type": "array"
+  },
+  "evidence_level": {
+   "default": "simulation",
+   "enum": [
+    "spaceflight",
+    "earth_research",
+    "simulation",
+    "rule_based"
+   ],
+   "title": "Evidence Level",
+   "type": "string"
+  },
+  "outputs": {
+   "default": {},
+   "title": "Outputs",
+   "type": "object"
+  }
+ },
+ "required": [
+  "astronaut_id",
+  "model_id",
+  "model_version",
+  "status",
+  "category"
+ ],
+ "title": "Assessment",
+ "type": "object"
+}

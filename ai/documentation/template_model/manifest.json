@@ -1,0 +1,22 @@
+{
+  "id": "my_new_model",
+  "name": "My new model",
+  "version": "0.1.0",
+  "category": "fatigue",
+  "description": "One sentence on what it estimates.",
+  "intended_use": "Who uses the output and for what.",
+  "not_intended_for": "Clinical diagnosis or treatment decisions.",
+  "entrypoint": "template_model.model:MyNewModel",
+  "inputs": [{"metric": "resting_heart_rate", "unit": "bpm", "required": true, "min_days": 7, "max_staleness_days": 2}],
+  "outputs": {"value": "what the number means and its unit"},
+  "supported_indicators": ["heart rate"],
+  "datasets": [{"name": "Dataset name", "source": "https://...", "license": "licence", "population": "who", "astronaut_data": false, "simulated": false}],
+  "evidence_level": "earth_research",
+  "validated_on_astronauts": false,
+  "status": "research_prototype",
+  "artifact": null,
+  "report": "report.json",
+  "enabled_by_default": false,
+  "execution": {"environments": ["server", "desktop"], "provider": "local", "timeout_s": 5, "memory_mb": 50, "requires": []},
+  "alerting": {"emit_alerts": false, "min_severity": "caution", "cooldown_hours": 24, "thresholds": {}}
+}

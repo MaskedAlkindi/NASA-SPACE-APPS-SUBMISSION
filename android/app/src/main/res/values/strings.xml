@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Product name: change it here (Android) -->
+    <string name="app_name">HEALTH-01</string>
+    <string name="team_name">Team Amerat 01</string>
+</resources>

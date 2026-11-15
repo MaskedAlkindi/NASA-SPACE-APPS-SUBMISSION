@@ -1,0 +1,78 @@
+{
+ "model_id": "glucose_metabolic",
+ "dataset": "CGMacros v1.0.0",
+ "trained_at": "2026-11-14T14:50:19+00:00",
+ "sklearn_version": "1.5.2",
+ "participants": 45,
+ "groups_from_hba1c": {
+  "prediabetes": 16,
+  "normal": 15,
+  "diabetes": 14
+ },
+ "homa_ir": {
+  "formula": "fasting glucose [mg/dL] x fasting insulin [uU/mL] / 405 (Matthews 1985)",
+  "n": 45,
+  "median": 4.24,
+  "iqr": [
+   2.25,
+   5.08
+  ],
+  "by_group_median": {
+   "diabetes": 5.06,
+   "normal": 1.99,
+   "prediabetes": 4.61
+  },
+  "cutoff_used": 2.5,
+  "cutoff_note": "HOMA-IR cut-offs vary by population (commonly 2.0-2.9); 2.5 used here for illustration."
+ },
+ "insulin_resistance_from_cgm": {
+  "n": 45,
+  "positives": 32,
+  "evaluation": "leave-one-subject-out",
+  "auc": 0.825,
+  "auc_95ci_bootstrap": [
+   0.679,
+   0.949
+  ],
+  "spearman_cgm_feature_vs_homa_ir": {
+   "mean_mg_dl": 0.527,
+   "sd_mg_dl": 0.447,
+   "cv_pct": 0.096,
+   "tir_70_180_pct": 0.155,
+   "tar_180_pct": 0.471,
+   "night_mean_mg_dl": 0.61
+  },
+  "features": [
+   "mean_mg_dl",
+   "sd_mg_dl",
+   "cv_pct",
+   "tir_70_180_pct",
+   "tar_180_pct",
+   "night_mean_mg_dl"
+  ]
+ },
+ "postprandial_rise": {
+  "meals": 1696,
+  "subjects": 45,
+  "evaluation": "leave-one-subject-out",
+  "mae_mg_dl_model": 18.6,
+  "mae_mg_dl_carbs_only_linear": 26.6,
+  "mae_mg_dl_predict_mean": 27.3,
+  "spearman_pred_vs_actual": 0.668,
+  "features": [
+   "carbs",
+   "protein",
+   "fat",
+   "fiber",
+   "pre_glucose",
+   "hour",
+   "mean_mg_dl",
+   "cv_pct"
+  ]
+ },
+ "limitations": [
+  "45 adults, ~10 days each; Earth-based, not astronauts.",
+  "CGM-based insulin-resistance flag is a research signal, not a validated alternative to fasting insulin / HOMA-IR or clamp testing.",
+  "The app's astronauts have daily fasting glucose, not CGM or meal logs, so the CGM parts run only if CGM data is supplied."
+ ]
+}

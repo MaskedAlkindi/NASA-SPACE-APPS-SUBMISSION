@@ -192,6 +192,8 @@ a.sk-dl:hover { transform: rotate(-1deg); }
 .sk-model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 6px; }
 .sk-model h4 { margin: 0; font: 400 30px/1.1 var(--display); }
 .sk-model .sk-of { margin: 2px 0 12px; color: var(--muted); font-size: 16px; }
+.sk-model .sk-why { margin: 0 0 8px; color: var(--red); font-size: 17px; line-height: 1.35; }
+.sk-model .sk-why b { font-weight: 400; font-family: var(--display); }
 .sk-model dl { margin: 0; }
 .sk-model dt { font: 18px/1.2 var(--display); color: var(--yellow); }
 .sk-model dd { margin: 2px 0 12px; color: #d5d0c4; font-size: 17px; line-height: 1.4; }
@@ -239,7 +241,13 @@ a.sk-dl:hover { transform: rotate(-1deg); }
 .sk-gallery-pic img { height: 190px; object-fit: cover; background: #e7e2d6; }
 .sk-gallery-pic figcaption { font-size: 22px; }
 .sk-gallery-pic:hover { transform: rotate(0deg) scale(1.04) !important; z-index: 2; }
+.sk-demo-row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.sk-demo-row h2 { margin-bottom: 8px; }
+.sk-demo-summary { max-width: 68ch; }
+.sk-demo-summary p { margin: 0 0 12px; color: #d5d0c4; }
+.sk-demo-row .sk-btn { margin-top: 4px; }
 .sk-film { max-width: 860px; aspect-ratio: 16 / 9; padding: 0; overflow: hidden; margin: 8px 0 28px; }
+.sk-demo-row .sk-film { max-width: none; width: 100%; margin: 8px 0 14px; }
 .sk-film iframe { display: block; width: 100%; height: 100%; border: 0; }
 .sk-film-wait { display: flex; align-items: center; justify-content: center; min-height: 220px; aspect-ratio: auto; padding: 24px; }
 .sk-film-wait p { margin: 0; color: var(--muted); }
@@ -253,7 +261,7 @@ a.sk-dl:hover { transform: rotate(-1deg); }
   .sk-nav { display: flex; max-width: none; width: 100%; justify-content: flex-start; order: 5; }
   .sk-refgrid { grid-template-columns: 1fr; }
   .sk-gh { margin-left: auto; }
-  .sk-hero, .sk-split, .sk-about-grid, .sk-downloads, .sk-notes, .sk-shots, .sk-model-grid { grid-template-columns: 1fr; }
+  .sk-hero, .sk-split, .sk-about-grid, .sk-downloads, .sk-notes, .sk-shots, .sk-model-grid, .sk-demo-row { grid-template-columns: 1fr; }
   .sk-phone-row { flex-wrap: nowrap; overflow-x: auto; }
   .sk-phone { flex: none; }
   .sk-hero { gap: 60px; }

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HEALTH-01 pitch</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0c0f1c; color: #ece7dc; font-family: "Avenir Next", "Segoe UI", sans-serif; }
+  body { display: flex; flex-direction: column; min-height: 100%; }
+  .bar { display: flex; gap: 8px; align-items: center; padding: 8px 10px; }
+  button {
+    background: #1c243a; color: #ece7dc; border: 1px solid #3a4258; border-radius: 6px;
+    padding: 6px 12px; font: inherit; cursor: pointer;
+  }
+  button:disabled { opacity: 0.4; cursor: default; }
+  #count { color: #a9b0c0; margin-left: 6px; }
+  #deck { flex: 1; min-height: 0; position: relative; }
+  .slide {
+    position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px;
+    padding: 14px 14px 10px 22px; overflow: auto;
+  }
+  .slide[hidden] { display: none; }
+  .slide::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px; background: #ff6b4a; }
+  .kicker { margin: 0; color: #ffd66b; font-weight: 650; }
+  .headline { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.7rem); line-height: 1.1; font-weight: 650; max-width: 18ch; font-family: "Marker Felt", "Segoe Print", "Avenir Next", sans-serif; }
+  .line { margin: 0; font-size: clamp(0.85rem, 1.5vw, 1rem); line-height: 1.3; }
+  .quiet { margin: 0; color: #a9b0c0; font-size: 0.86rem; line-height: 1.3; }
+  .big { margin: 0; color: #ffd66b; font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1; font-weight: 700; }
+  .gold { margin: 0; color: #ffd66b; font-weight: 650; }
+  footer { margin-top: auto; display: flex; justify-content: space-between; color: #a9b0c0; font-size: 0.8rem; }
+  .title { margin: auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .title img { width: min(150px, 34%); height: auto; }
+  .name { margin: 6px 0 0; font-size: clamp(1.6rem, 4vw, 2.2rem); font-family: "Marker Felt", "Segoe Print", "Avenir Next", sans-serif; }
+  .team { margin: 0; color: #ffd66b; font-family: "Marker Felt", "Segoe Print", "Avenir Next", sans-serif; font-size: 1.2rem; }
+  .split, .two, .three { min-height: 0; }
+  .split { display: grid; grid-template-columns: 0.9fr 1.15fr; gap: 10px; align-items: center; flex: 1; }
+  .copy, .panel { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+  img.shot, img.wide, img.donkey { width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 8px; display: block; }
+  .panel img { background: #fff; max-height: 46vh; object-fit: contain; object-position: left top; }
+  .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; flex: 1; }
+  .card, .row { background: #151a2c; border-radius: 10px; padding: 10px; }
+  .card { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+  .rows { display: flex; flex-direction: column; gap: 6px; }
+  .row { display: flex; justify-content: space-between; gap: 8px; }
+  .row span:first-child { color: #ffd66b; font-weight: 650; }
+  .two, .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; }
+  .pair { background: #151a2c; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .pair .gold { font-size: 0.95rem; }
+  @media (max-width: 720px) {
+    .split, .two, .three, .pairs { grid-template-columns: 1fr; }
+    .row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <button type="button" id="prev">Previous</button>
+    <button type="button" id="next">Next</button>
+    <span id="count">Slide 1 of 7</span>
+  </div>
+  <div id="deck">
+    <article class="slide">
+      <div class="title">
+        <img src="img/logo.png" alt="Amerat 01 helmet sketch">
+        <p class="name">HEALTH-01</p>
+        <p class="team">Team Amerat 01</p>
+        <p class="line">Hajid Alkindi</p>
+        <p class="line">health for the people on board</p>
+      </div>
+      <footer><span>5 minutes</span><span>1 / 7</span></footer>
+    </article>
+    <article class="slide" hidden>
+      <p class="kicker">the problem</p>
+      <p class="headline">Up there, normal moves.</p>
+      <div class="split">
+        <div class="copy">
+          <p class="big">1–1.5%</p>
+          <p class="line">bone lost each month</p>
+          <p class="quiet">NASA fracture-risk report, page 4. Weight-bearing bone.</p>
+          <p class="line">So we use each person's own days. Not an Earth average.</p>
+        </div>
+        <img class="shot" src="img/hazards.jpg" alt="NASA's five hazards on the HEALTH-01 page.">
+      </div>
+      <footer><span>5 minutes</span><span>2 / 7</span></footer>
+    </article>
+    <article class="slide" hidden>
+      <p class="kicker">how it works</p>
+      <p class="headline">Watch in. A person decides.</p>
+      <img class="wide" src="img/diagram.jpg" alt="Watches, check-ins and the cabin go into one server. A person decides.">
+      <footer><span>5 minutes</span><span>3 / 7</span></footer>
+    </article>
+    <article class="slide" hidden>
+      <p class="kicker">the proof</p>
+      <p class="headline">Earth studies. Not astronauts yet.</p>
+      <div class="three">
+        <div class="card"><p class="big">79%</p><p class="line">illness episodes caught early</p><p class="quiet">Stanford wearables. Mishra and colleagues, 2020. About 1 false alarm in 30 healthy days.</p></div>
+        <div class="card"><p class="big">0.83</p><p class="line">sugar pattern</p><p class="quiet">CGMacros. 45 adults. A pattern, not a diagnosis.</p></div>
+        <div class="card"><p class="big">1.1</p><p class="line">beats off the watch</p><p class="quiet">MMASH. 22 people. We checked the math.</p></div>
+      </div>
+      <footer><span>5 minutes</span><span>4 / 7</span></footer>
+    </article>
+    <article class="slide" hidden>
+      <p class="kicker">from the studies</p>
+      <p class="headline">A problem. Then what we built.</p>
+      <div class="pairs">
+        <div class="pair">
+          <p class="quiet">problem</p>
+          <p class="line">Crews lose about 2.4% of body weight per 100 days. NASA nutrition report, page 22.</p>
+          <p class="gold">solution</p>
+          <p class="line">Nutrition tracking. Meals, water, and weight.</p>
+        </div>
+        <div class="pair">
+          <p class="quiet">problem</p>
+          <p class="line">The watch alone is weak on tiredness. PMData, score 0.55.</p>
+          <p class="gold">solution</p>
+          <p class="line">We ask how they feel. Exercise tracking counts the work.</p>
+        </div>
+        <div class="pair">
+          <p class="quiet">problem</p>
+          <p class="line">Illness can show in the watch early. Stanford wearables, Mishra 2020.</p>
+          <p class="gold">solution</p>
+          <p class="line">Compare each person to their own days. 79% caught early.</p>
+        </div>
+        <div class="pair">
+          <p class="quiet">problem</p>
+          <p class="line">Weight-bearing bone loses 1–1.5% a month. NASA fracture report, page 4.</p>
+          <p class="gold">solution</p>
+          <p class="line">Exercise says go, go lighter, or rest.</p>
+        </div>
+      </div>
+      <footer><span>5 minutes</span><span>5 / 7</span></footer>
+    </article>
+    <article class="slide" hidden>
+      <p class="kicker">what you log</p>
+      <div class="two">
+        <div class="panel">
+          <p class="gold">Exercise tracking</p>
+          <p class="line">The camera detects the body and counts each rep. The video stays on the phone.</p>
+          <img class="shot" src="img/exercise.jpg" alt="Exercise page with a camera session.">
+        </div>
+        <div class="panel">
+          <p class="gold">Nutrition tracking</p>
+          <p class="line">Meals, water, and body weight. Example marks. Not a meal plan.</p>
+          <img class="shot" src="img/nutrition.jpg" alt="Nutrition page with rings for one station day.">
+        </div>
+      </div>
+      <footer><span>5 minutes</span><span>6 / 7</span></footer>
+    </article>
+    <article class="slide" hidden>
+      <div class="split">
+        <div class="copy">
+          <p class="kicker">close</p>
+          <p class="headline">A person still decides.</p>
+          <p class="line">Not a doctor.</p>
+          <p class="line">Not tested on astronauts.</p>
+          <p class="line">Every number has a home.</p>
+        </div>
+        <img class="donkey" src="img/donkey.jpg" alt="Hajid and the space donkey looking at Earth.">
+      </div>
+      <footer><span>5 minutes</span><span>7 / 7</span></footer>
+    </article>
+  </div>
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var index = 0;
+    var count = document.getElementById("count");
+    var prev = document.getElementById("prev");
+    var next = document.getElementById("next");
+    function show() {
+      slides.forEach(function (slide, i) { slide.hidden = i !== index; });
+      count.textContent = "Slide " + (index + 1) + " of 7";
+      prev.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
+    }
+    prev.addEventListener("click", function () { if (index > 0) { index -= 1; show(); } });
+    next.addEventListener("click", function () { if (index < slides.length - 1) { index += 1; show(); } });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowRight") next.click();
+      else if (event.key === "ArrowLeft") prev.click();
+    });
+    show();
+  })();
+</script>
+</body>
+</html>

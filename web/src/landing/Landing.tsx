@@ -73,7 +73,7 @@ const NOTES = [
 ];
 
 type SourceLink = { label: string; href?: string };
-type ModelCard = { lane: string; model: string; of: string; made: string; summary: string; tone: "ok" | "meh"; sources: SourceLink[] };
+type ModelCard = { lane: string; model: string; of: string; made: string; summary: string; tone: "ok" | "meh"; problem: string; inspired: string; sources: SourceLink[] };
 
 const MISHRA = "https://medrxiv.org/content/10.1101/2020.07.06.20147512v1";
 
@@ -86,6 +86,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "a robust z-score on one resting heart rate per day, against that person's previous 28 days, with today left out of its own baseline. tested on the Stanford smartwatch study: about 118 people, 32 covid episodes and 32 other illnesses. the dates were shifted so a person cannot be identified. used to test the rule, not to train a classifier, and not redistributed.",
     summary: "flagged 79% of 24 held-out illness episodes, about one false alert per 30 healthy days. this is the model that can raise an alert.",
     tone: "ok",
+    problem: "people get sick a long way from a hospital, and resting heart rate can move before they feel very sick.",
+    inspired: "an alert that compares this person with their own earlier days. this is the one allowed to warn.",
     sources: [{ label: "Mishra et al. 2020, preprint (Nat Biomed Eng)", href: MISHRA }],
   },
   {
@@ -95,6 +97,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "leave-one-person-out on CGMacros, 45 adults in the United States: 15 with normal HbA1c, 16 with prediabetes, 14 with type 2 diabetes. food photos were left out. the file says HbA1c is mmol/mol, but 4.6–8.5 are percentages. a day becomes a 14-day fasting mean, its spread, a weekly trend, HOMA-IR (glucose × insulin / 405), and the usual continuous-glucose summaries.",
     summary: "the insulin-resistance pattern scores AUC 0.83 (95% CI 0.68–0.95). informational. it does not diagnose diabetes.",
     tone: "ok",
+    problem: "a sugar pattern can shift without a diagnosis attached.",
+    inspired: "the pattern is shown on the day. it stays informational and does not diagnose.",
     sources: [{ label: "CGMacros on PhysioNet", href: "https://physionet.org/content/cgmacros/1.0.0/" }],
   },
   {
@@ -104,6 +108,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "PMData, 16 healthy adults in Norway, Fitbit Versa 2, daily files only. resting heart rate, sleep hours, sleep timing, steps and exercise, each as a distance from that person's own days, plus a 3-day sleep debt. their diary runs 1 = worst to 5 = best, the opposite of the app's score, so the two are never mixed.",
     summary: "wearables alone are weak (AUC 0.55). yesterday's own diary does better. it stays informational and asks for a check-in.",
     tone: "meh",
+    problem: "the watch alone is weak at tiredness.",
+    inspired: "a check-in asks how they feel, and exercise tracking counts the work.",
     sources: [
       { label: "PMData", href: "https://datasets.simula.no/pmdata" },
       { label: "Thambawita et al., MMSys 2020", href: "https://doi.org/10.1145/3339825.3394926" },
@@ -116,6 +122,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "CVES, 71 sit-to-stand recordings, electrocardiogram and arterial blood pressure at 500 samples a second. the paper's blood-pressure change is sit minus stand. features are stand minus sit, with the sign flipped so the two line up. one recording, not a daily wearable row.",
     summary: "agreement is only moderate (r ≈ 0.5). earth data, but it ships switched off and never raises an alert.",
     tone: "meh",
+    problem: "standing changes blood pressure, and the match with the published change was only moderate.",
+    inspired: "it is in the system, switched off. it never raises an alert.",
     sources: [{ label: "CVES on PhysioNet", href: "https://physionet.org/content/cves/1.0.0/" }],
   },
   {
@@ -125,6 +133,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "MMASH, 22 healthy young men, one day and night of beat-to-beat heart recordings. the gaps between beats become a heart rate, and the night becomes a sleep-efficiency number. both are checked against the values already in the recording. this is not a model of illness.",
     summary: "heart rate from the raw beats lands within 1.1 bpm of the device. the sleep-efficiency formula matches exactly.",
     tone: "ok",
+    problem: "if the heart-rate math is wrong, every later comparison is wrong.",
+    inspired: "a check that the beats match the device. not a forecast.",
     sources: [
       { label: "MMASH on PhysioNet", href: "https://physionet.org/content/mmash/1.0.0/" },
       { label: "Rossi et al. 2020", href: "https://doi.org/10.13026/cerq-fc86" },
@@ -137,6 +147,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "an isolation forest on a synthetic crew made in this project. each day is a robust z-score of resting heart rate, HRV, sleep and steps against that person's own earlier days. people in the test set never appear in training.",
     summary: "strong on the fake crew, but a simple heart-rate rule beats it there. on the real Stanford illnesses it flagged 46% and stayed specific (98.2%). it does not raise the research alerts.",
     tone: "meh",
+    problem: "a detector trained on a fake crew can look strong and still miss real illness.",
+    inspired: "it stays labelled simulation and does not raise the research alerts.",
     sources: [
       { label: "synthetic crew, this project" },
       { label: "method: Liu, Ting & Zhou, 2008" },
@@ -150,6 +162,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "gradient boosting on synthetic fatigue scores, from sleep, sleep debt, workload and yesterday's score. the labels were generated in this project, not taken from a diary.",
     summary: "about half a point off on held-out simulated days (MAE 0.52). it does not raise an alert.",
     tone: "meh",
+    problem: "a tiredness score from fake diaries is not how a person feels.",
+    inspired: "it stays a simulation. the real signal is the check-in we ask for.",
     sources: [
       { label: "synthetic scores, this project" },
       { label: "scale: Samn & Perelli, 1982" },
@@ -162,6 +176,8 @@ const MODEL_CARDS: ModelCard[] = [
     made: "damped Holt smoothing, refit on each synthetic astronaut's own last 45 days. a 7-day line with an 80% band.",
     summary: "on held-out simulated people, the 7-day resting heart rate error is about 1.9 bpm. it moves slowly on purpose. sudden changes belong to the anomaly model.",
     tone: "meh",
+    problem: "a slow trend is easy to mistake for a sudden change.",
+    inspired: "a 7-day line on the simulated crew, labelled simulation. sudden changes stay with the anomaly model.",
     sources: [
       { label: "synthetic series, this project" },
       { label: "method: Holt 1957; Gardner & McKenzie 1985" },
@@ -335,6 +351,7 @@ export default function Landing() {
         </a>
         <nav className="sk-nav" aria-label="Sections">
           <a href="#film">the film</a>
+          <a href="#pitch">the pitch</a>
           <a href="#how">how it works</a>
           <a href="#pieces">the pieces</a>
           <a href="#exercise">exercise</a>
@@ -377,8 +394,23 @@ export default function Landing() {
         </section>
 
         <section id="film" className="sk-section">
-          <h2><span className="sk-hl">watch the demo</span></h2>
-          <Film src={DEMO_VIDEO} title="HEALTH-01 demo" />
+          <div className="sk-demo-row">
+            <div>
+              <h2><span className="sk-hl">watch the demo</span></h2>
+              <Film src={DEMO_VIDEO} title="HEALTH-01 demo" />
+              <div className="sk-demo-summary">
+                <p>The film is the final demo of HEALTH-01, a notebook for the people on board. The watch and the phone send the day. The server sets that day beside the same person’s own earlier days, and it puts the evidence on the alert. Nothing here is a diagnosis, and nothing here clears a crew member to train or to fly. A person still decides.</p>
+                <p>Nutrition tracking is in this demo as well. Meals, fluid and body weight are logged for the station day. The rings use example marks so the day has a scale. They are not a flight menu, and they are not medical advice. Exercise tracking sits in the same demo: the camera detects the body, counts the rep, and leaves the video on the phone.</p>
+              </div>
+            </div>
+            <div id="pitch">
+              <h2><span className="sk-hl">the 5 minute pitch</span></h2>
+              <div className="sk-paper sk-film">
+                <iframe src="/pitch/index.html" title="HEALTH-01 five minute pitch" />
+              </div>
+              <a className="sk-btn" href="/pitch/HEALTH-01-pitch.pdf" download>download the pitch</a>
+            </div>
+          </div>
         </section>
 
         <section id="how" className="sk-section">
@@ -511,6 +543,8 @@ export default function Landing() {
                   <article key={card.model} className="sk-paper sk-model">
                     <h4>{card.model}</h4>
                     <p className="sk-of">{card.of}</p>
+                    <p className="sk-why"><b>problem. </b>{card.problem}</p>
+                    <p className="sk-why"><b>inspired. </b>{card.inspired}</p>
                     <dl>
                       <dt>how it was made</dt>
                       <dd>{card.made}</dd>

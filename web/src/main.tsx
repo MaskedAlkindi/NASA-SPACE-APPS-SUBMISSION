@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "./auth";
 import Layout from "./components/Layout";
-import { APP_BASE, APP_NAME, EDITION } from "./config";
+import { APP_BASE, APP_NAME, EDITION, STATIC_DEMO } from "./config";
+import DesktopOnly from "./components/DesktopOnly";
 import Landing from "./landing/Landing";
 import Assistant from "./pages/Assistant";
 import Dashboard from "./pages/Dashboard";
@@ -40,9 +41,9 @@ function App() {
         <Route path="nutrition" element={<NutritionPage />} />
         <Route path="risks" element={<Navigate to="/settings?tab=hazards" replace />} />
         <Route path="intelligence" element={<Intelligence />} />
-        <Route path="assistant" element={<Assistant />} />
-        <Route path="ai-models" element={<AiModels />} />
-        <Route path="fine-tuning" element={<FineTuning />} />
+        <Route path="assistant" element={STATIC_DEMO ? <DesktopOnly title="Assistant" /> : <Assistant />} />
+        <Route path="ai-models" element={STATIC_DEMO ? <DesktopOnly title="AI models" /> : <AiModels />} />
+        <Route path="fine-tuning" element={STATIC_DEMO ? <DesktopOnly title="Fine-tuning" /> : <FineTuning />} />
         <Route path="research" element={<Navigate to="/settings?tab=research" replace />} />
         <Route path="settings" element={<Settings />} />
         <Route path="habitat" element={<Habitat />} />

@@ -166,7 +166,7 @@ button.sk-bit:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3p
 .sk-app-icon { width: 108px; height: 108px; border-radius: 26px; display: block; transform: rotate(-5deg);
   box-shadow: 0 16px 30px rgba(0, 0, 0, .5); background: #0a4d96; }
 
-.sk-downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.sk-downloads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .sk-dl { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-decoration: none; height: 100%; transition: transform .15s; }
 a.sk-dl:hover { transform: rotate(-1deg); }
 .sk-dl p { margin: 0 0 10px; color: #d5d0c4; }

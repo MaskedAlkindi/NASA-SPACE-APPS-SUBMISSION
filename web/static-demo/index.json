@@ -1,0 +1,54 @@
+{
+ "public": "mission-control",
+ "users": {
+  "mission-control": {
+   "username": "mission-control",
+   "display_name": "Mission Control",
+   "role": "mission_control",
+   "astronaut_id": null
+  },
+  "flight-surgeon": {
+   "username": "flight-surgeon",
+   "display_name": "Flight Surgeon",
+   "role": "flight_surgeon",
+   "astronaut_id": null
+  },
+  "haitham": {
+   "username": "haitham",
+   "display_name": "Al Haitham Al Obaidani",
+   "role": "astronaut",
+   "astronaut_id": "AST-004"
+  },
+  "hajid": {
+   "username": "hajid",
+   "display_name": "Hajid Alkindi",
+   "role": "astronaut",
+   "astronaut_id": "AST-001"
+  },
+  "hamood": {
+   "username": "hamood",
+   "display_name": "Hamood Almahrouqi",
+   "role": "astronaut",
+   "astronaut_id": "AST-003"
+  },
+  "mohmmed": {
+   "username": "mohmmed",
+   "display_name": "Mohmmed Alwahabi",
+   "role": "astronaut",
+   "astronaut_id": "AST-005"
+  },
+  "osama": {
+   "username": "osama",
+   "display_name": "Osama Al Adawani",
+   "role": "astronaut",
+   "astronaut_id": "AST-002"
+  },
+  "pilot": {
+   "username": "pilot",
+   "display_name": "PILOT (real device)",
+   "role": "astronaut",
+   "astronaut_id": "AST-900"
+  }
+ },
+ "recorded_at": "2026-11-16"
+}

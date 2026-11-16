@@ -70,6 +70,20 @@ Verify the running stack and run the tests:
 ./scripts/test.sh
 ```
 
+## Web demo on Vercel
+
+A read-only copy of the website with no backend. The API answers are recorded JSON in `web/static-demo/`. The AI pages (Assistant, Models, Fine-tuning) show "Unavailable" and link to the desktop app.
+
+In Vercel, import the repository and set **Root Directory** to `web`. `web/vercel.json` holds the rest. To refresh the recorded data:
+
+```bash
+python scripts/build_static_demo.py   # needs backend/requirements.txt installed
+```
+
+## Desktop app releases
+
+Push a tag such as `v1.0.0` and `.github/workflows/desktop-release.yml` builds the Electron app (Windows `.exe`, macOS `.dmg`, Linux `.AppImage`) and attaches it to a GitHub release. The website's download links point to `releases/latest`.
+
 ## Renaming the product
 
 "HEALTH-01" is a working name. To change it, edit these one-line settings:

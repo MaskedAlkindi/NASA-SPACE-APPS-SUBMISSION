@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, getToken, type Alert } from "./api";
+import { STATIC_DEMO } from "./config";
 
 /** Fetch JSON from the API; re-runs when deps change. `reload` refetches. */
 export function useApi<T>(path: string | null, deps: unknown[] = []) {
@@ -49,6 +50,7 @@ export function useLive(onEvent: (e: LiveEvent) => void) {
   handler.current = onEvent;
   const [connected, setConnected] = useState(false);
   useEffect(() => {
+    if (STATIC_DEMO) return; // no server behind the static web demo
     let ws: WebSocket | null = null;
     let stopped = false;
     let retry: number | undefined;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { APP_BASE, TEAM_NAME, TEAM_NUMBER } from "../config";
+import { APP_BASE, DESKTOP_APP_URL, TEAM_NAME, TEAM_NUMBER } from "../config";
 import Avatar from "../components/Avatar";
 import { Puzzle } from "./Puzzle";
 import References from "./References";
@@ -724,6 +724,14 @@ export default function Landing() {
               body="the Android build is in this Drive folder. download the APK and open it. the phone will ask you to allow the install. Android 14+ already has Health Connect."
               href={WEARABLE_APP.android}
               cta="open the Android folder →"
+            />
+            <DownloadCard
+              id="desktop"
+              os="Desktop"
+              title="GitHub release"
+              body="the full app with the AI assistant and models. Windows, Mac and Linux."
+              href={DESKTOP_APP_URL}
+              cta="download the desktop app →"
             />
           </div>
           <p className="sk-aside center">the demo opens with no passcode. the named crew in it stays simulated.</p>

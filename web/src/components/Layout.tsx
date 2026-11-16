@@ -6,7 +6,7 @@ import { useApi, useLive } from "../hooks";
 import { Badge } from "./ui";
 import Onboarding from "./Onboarding";
 import StationClock from "./StationClock";
-import { APP_NAME, TEAM_NAME, TEAM_NUMBER } from "../config";
+import { APP_NAME, DESKTOP_APP_URL, STATIC_DEMO, TEAM_NAME, TEAM_NUMBER } from "../config";
 
 const I = (d: string) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={d} /></svg>;
 type NavItem = [string, string, ReactNode];
@@ -92,11 +92,18 @@ export default function Layout() {
       </aside>
       <div className="main">
         <header className="topbar">
+          {STATIC_DEMO ? (
+            <span className="row small">
+              <Badge kind="info">web demo</Badge>
+              <a href={DESKTOP_APP_URL} target="_blank" rel="noreferrer">Get the desktop app for AI</a>
+            </span>
+          ) : <>
           <span className="row small">
             <span className={`dot ${h?.database ? "on" : h ? "off" : ""}`} /> API {h ? h.status : "…"}
           </span>
           <span className="row small"><span className={`dot ${connected ? "on" : "warn"}`} /> Live feed {connected ? "connected" : "connecting"}{liveCount > 0 && <span className="faint">· {liveCount} readings</span>}</span>
           <span className="row small">Assistant: <Badge kind={h && h.assistant_mode !== "offline" ? "ok" : "neutral"}>{h ? (h.assistant_mode === "offline" ? "offline explainer" : h.assistant_mode === "ollama" ? "the fine tuned version" : `${h.assistant_mode} · ${h.assistant_model}`) : "…"}</Badge></span>
+          </>}
           <StationClock />
           <div className="spacer" />
           {user && (

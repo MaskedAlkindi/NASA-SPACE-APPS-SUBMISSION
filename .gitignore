@@ -16,6 +16,7 @@ ml/artifacts/forecast_holt_v1.json
 # web
 web/node_modules/
 web/dist/
+desktop/dist/
 
 # android
 android/.gradle/

@@ -1,4 +1,5 @@
 // Typed API client for the HEALTH-01 backend (same-origin /api/v1 via nginx or Vite proxy).
+import { STATIC_DEMO } from "./config";
 
 export const API = "/api/v1";
 const TOKEN_KEY = "hmt.token";
@@ -24,7 +25,38 @@ export class ApiError extends Error {
   constructor(public status: number, message: string) { super(message); }
 }
 
+// ---- static web demo: answers come from recorded JSON, writes are refused ----
+interface StaticIndex { public: string; users: Record<string, User> }
+const staticFiles = new Map<string, Promise<any>>();
+function staticJson(name: string): Promise<any> {
+  if (!staticFiles.has(name)) {
+    staticFiles.set(name, fetch(`/demo-data/${name}.json`).then((r) => {
+      if (!r.ok) throw new ApiError(r.status, "Demo data missing");
+      return r.json();
+    }));
+  }
+  return staticFiles.get(name)!;
+}
+
+async function staticApi(path: string, method: string, body: unknown): Promise<any> {
+  const index: StaticIndex = await staticJson("index");
+  if (path === "/auth/public" || path === "/auth/demo-switch" || path === "/auth/login") {
+    const name = path === "/auth/public" ? index.public : (body as { username?: string })?.username ?? "";
+    const user = index.users[name];
+    if (!user) throw new ApiError(404, "Unknown demo account");
+    return { access_token: `static-demo:${name}`, user };
+  }
+  if (method !== "GET") throw new ApiError(403, "Read-only web demo. Download the desktop app for the full version.");
+  const name = getStoredUser()?.username ?? index.public;
+  const data = await staticJson(index.users[name] ? name : index.public);
+  // Dated queries (today's meals, this month's calendar) fall back to the recorded default.
+  const hit = data[path] ?? data[path.split("?")[0]];
+  if (hit === undefined) throw new ApiError(404, "Not in the web demo");
+  return hit;
+}
+
 export async function api<T = any>(path: string, opts: { method?: string; body?: unknown; signal?: AbortSignal } = {}): Promise<T> {
+  if (STATIC_DEMO) return staticApi(path, opts.method ?? (opts.body !== undefined ? "POST" : "GET"), opts.body);
   const token = getToken();
   const res = await fetch(API + path, {
     method: opts.method ?? (opts.body !== undefined ? "POST" : "GET"),
